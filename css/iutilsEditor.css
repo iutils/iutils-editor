@@ -104,3 +104,6 @@
 .iutilsEditor-content h1,.iutilsEditor-content h2,.iutilsEditor-content h3,.iutilsEditor-content h4,.iutilsEditor-content h5,.iutilsEditor-content h6{
     margin: 0;
 }
+.iutilsEditor-tools .choose-table td.active{
+    background-color: #eee;
+}
