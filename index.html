@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>iutils - 编辑器</title>
+    <link rel="stylesheet" href="3rd-lib/amazeui/css/amazeui.min.css" />
+    <link rel="stylesheet" href="css/iutilsEditor.css" />
+    <script src="3rd-lib/jquery/2.2.3/jquery.min.js"></script>
+    <script src="3rd-lib/amazeui/js/amazeui.min.js"></script>
+</head>
+<body style="padding: 50px;">
+    <p>iutils 编辑器 原始UI</p>
+    <div class="iutilsEditor">
+        <div class="iutilsEditor-tools">
+            <div class="am-btn-toolbar">
+                <div class="am-btn-group am-btn-group-xs">
+                    <button type="button" class="am-btn am-btn-iutils iutils-code" title="源代码"><i class="am-icon-code"></i></button>
+                </div>
+                <div class="am-btn-group am-btn-group-xs">
+                    <div class="am-dropdown" data-am-dropdown>
+                        <button type="button" class="am-btn am-btn-iutils am-dropdown-toggle" title="字体设置"><i class="am-icon-font"></i></button>
+                        <div class="am-dropdown-content">
+                            <form class="am-form am-form-horizontal">
+                                <div class="am-form-group">
+                                    <label class="am-u-sm-4 am-form-label">字体：</label>
+                                    <div class="am-u-sm-8">
+                                        <input type="text" placeholder="如：宋体">
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label class="am-u-sm-4 am-form-label">字号：</label>
+                                    <div class="am-u-sm-8">
+                                        <input type="text" placeholder="如：16">
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label class="am-u-sm-4 am-form-label">颜色：</label>
+                                    <div class="am-u-sm-8">
+                                        <input type="text" placeholder="如：#fff">
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label class="am-u-sm-4 am-form-label">背景颜色：</label>
+                                    <div class="am-u-sm-8">
+                                        <input type="text" placeholder="如：#fff">
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <div class="am-u-sm-12">
+                                        <button type="button" class="am-btn am-btn-default am-btn-xs am-align-right" style="margin-bottom:0;">提交</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <button type="button" class="am-btn am-btn-iutils" title="粗体"><i class="am-icon-bold"></i></button>
+                    <button type="button" class="am-btn am-btn-iutils" title="斜体"><i class="am-icon-italic"></i></button>
+                    <button type="button" class="am-btn am-btn-iutils" title="下划线"><i class="am-icon-underline"></i></button>
+                    <button type="button" class="am-btn am-btn-iutils" title="删除线"><i class="am-icon-strikethrough"></i></button>
+                    <button type="button" class="am-btn am-btn-iutils" title="清除格式"><i class="am-icon-eraser"></i></button>
+                    <div class="am-dropdown" data-am-dropdown>
+                        <button type="button" class="am-btn am-btn-iutils am-dropdown-toggle" title="标题"><i class="am-icon-header"></i></button>
+                        <ul class="am-dropdown-content">
+                            <li><a href="#"><h1>标题1</h1></a></li>
+                            <li><a href="#"><h2>标题2</h2></a></li>
+                            <li><a href="#"><h3>标题3</h3></a></li>
+                            <li><a href="#"><h4>标题4</h4></a></li>
+                            <li><a href="#"><h5>标题5</h5></a></li>
+                            <li><a href="#"><h6>标题6</h6></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="am-btn-group am-btn-group-xs">
+                    <button type="button" class="am-btn am-btn-iutils" title="无序列表"><i class="am-icon-list-ul"></i></button>
+                    <button type="button" class="am-btn am-btn-iutils" title="有序列表"><i class="am-icon-list-ol"></i></button>
+                    <button type="button" class="am-btn am-btn-iutils" title="左对齐"><i class="am-icon-align-left"></i></button>
+                    <button type="button" class="am-btn am-btn-iutils" title="居中"><i class="am-icon-align-center"></i></button>
+                    <button type="button" class="am-btn am-btn-iutils" title="右对齐"><i class="am-icon-align-right"></i></button>
+                    <button type="button" class="am-btn am-btn-iutils" title="文本高度"><i class="am-icon-text-height"></i></button>
+                    <button type="button" class="am-btn am-btn-iutils" title="文本宽度"><i class="am-icon-text-width"></i></button>
+                </div>
+                <div class="am-btn-group am-btn-group-xs">
+                    <div class="am-dropdown" data-am-dropdown>
+                        <button type="button" class="am-btn am-btn-iutils am-dropdown-toggle" title="链接"><i class="am-icon-link"></i></button>
+                        <div class="am-dropdown-content">
+                            <form class="am-form am-form-horizontal">
+                                <div class="am-form-group">
+                                    <div class="am-u-sm-12">
+                                        <input type="text" placeholder="程序员工具">
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <div class="am-u-sm-12">
+                                        <input type="text" placeholder="http://iutils.cn">
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <div class="am-u-sm-12">
+                                        <button type="button" class="am-btn am-btn-default am-btn-xs am-align-right" style="margin-bottom:0;">提交</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <button type="button" class="am-btn am-btn-iutils" title="取消链接"><i class="am-icon-unlink"></i></button>
+                    <div class="am-dropdown" data-am-dropdown>
+                        <button type="button" class="am-btn am-btn-iutils am-dropdown-toggle" title="表格"><i class="am-icon-table"></i></button>
+                        <div class="am-dropdown-content" style="width: 291px;padding:10px;">
+                            <table class="choose-table" ><tbody><tr index="1"><td index="1"></td><td index="2"></td><td index="3"></td><td index="4"></td><td index="5"></td><td index="6"></td><td index="7"></td><td index="8"></td><td index="9"></td><td index="10"></td><td index="11"></td><td index="12"></td><td index="13"></td><td index="14"></td><td index="15"></td><td index="16"></td><td index="17"></td><td index="18"></td><td index="19"></td><td index="20"></td></tr><tr index="2"><td index="1"></td><td index="2"></td><td index="3"></td><td index="4"></td><td index="5"></td><td index="6"></td><td index="7"></td><td index="8"></td><td index="9"></td><td index="10"></td><td index="11"></td><td index="12"></td><td index="13"></td><td index="14"></td><td index="15"></td><td index="16"></td><td index="17"></td><td index="18"></td><td index="19"></td><td index="20"></td></tr><tr index="3"><td index="1"></td><td index="2"></td><td index="3"></td><td index="4"></td><td index="5"></td><td index="6"></td><td index="7"></td><td index="8"></td><td index="9"></td><td index="10"></td><td index="11"></td><td index="12"></td><td index="13"></td><td index="14"></td><td index="15"></td><td index="16"></td><td index="17"></td><td index="18"></td><td index="19"></td><td index="20"></td></tr><tr index="4"><td index="1"></td><td index="2"></td><td index="3"></td><td index="4"></td><td index="5"></td><td index="6"></td><td index="7"></td><td index="8"></td><td index="9"></td><td index="10"></td><td index="11"></td><td index="12"></td><td index="13"></td><td index="14"></td><td index="15"></td><td index="16"></td><td index="17"></td><td index="18"></td><td index="19"></td><td index="20"></td></tr><tr index="5"><td index="1"></td><td index="2"></td><td index="3"></td><td index="4"></td><td index="5"></td><td index="6"></td><td index="7"></td><td index="8"></td><td index="9"></td><td index="10"></td><td index="11"></td><td index="12"></td><td index="13"></td><td index="14"></td><td index="15"></td><td index="16"></td><td index="17"></td><td index="18"></td><td index="19"></td><td index="20"></td></tr><tr index="6"><td index="1"></td><td index="2"></td><td index="3"></td><td index="4"></td><td index="5"></td><td index="6"></td><td index="7"></td><td index="8"></td><td index="9"></td><td index="10"></td><td index="11"></td><td index="12"></td><td index="13"></td><td index="14"></td><td index="15"></td><td index="16"></td><td index="17"></td><td index="18"></td><td index="19"></td><td index="20"></td></tr><tr index="7"><td index="1"></td><td index="2"></td><td index="3"></td><td index="4"></td><td index="5"></td><td index="6"></td><td index="7"></td><td index="8"></td><td index="9"></td><td index="10"></td><td index="11"></td><td index="12"></td><td index="13"></td><td index="14"></td><td index="15"></td><td index="16"></td><td index="17"></td><td index="18"></td><td index="19"></td><td index="20"></td></tr><tr index="8"><td index="1"></td><td index="2"></td><td index="3"></td><td index="4"></td><td index="5"></td><td index="6"></td><td index="7"></td><td index="8"></td><td index="9"></td><td index="10"></td><td index="11"></td><td index="12"></td><td index="13"></td><td index="14"></td><td index="15"></td><td index="16"></td><td index="17"></td><td index="18"></td><td index="19"></td><td index="20"></td></tr><tr index="9"><td index="1"></td><td index="2"></td><td index="3"></td><td index="4"></td><td index="5"></td><td index="6"></td><td index="7"></td><td index="8"></td><td index="9"></td><td index="10"></td><td index="11"></td><td index="12"></td><td index="13"></td><td index="14"></td><td index="15"></td><td index="16"></td><td index="17"></td><td index="18"></td><td index="19"></td><td index="20"></td></tr><tr index="10"><td index="1"></td><td index="2"></td><td index="3"></td><td index="4"></td><td index="5"></td><td index="6"></td><td index="7"></td><td index="8"></td><td index="9"></td><td index="10"></td><td index="11"></td><td index="12"></td><td index="13"></td><td index="14"></td><td index="15"></td><td index="16"></td><td index="17"></td><td index="18"></td><td index="19"></td><td index="20"></td></tr><tr index="11"><td index="1"></td><td index="2"></td><td index="3"></td><td index="4"></td><td index="5"></td><td index="6"></td><td index="7"></td><td index="8"></td><td index="9"></td><td index="10"></td><td index="11"></td><td index="12"></td><td index="13"></td><td index="14"></td><td index="15"></td><td index="16"></td><td index="17"></td><td index="18"></td><td index="19"></td><td index="20"></td></tr><tr index="12"><td index="1"></td><td index="2"></td><td index="3"></td><td index="4"></td><td index="5"></td><td index="6"></td><td index="7"></td><td index="8"></td><td index="9"></td><td index="10"></td><td index="11"></td><td index="12"></td><td index="13"></td><td index="14"></td><td index="15"></td><td index="16"></td><td index="17"></td><td index="18"></td><td index="19"></td><td index="20"></td></tr><tr index="13"><td index="1"></td><td index="2"></td><td index="3"></td><td index="4"></td><td index="5"></td><td index="6"></td><td index="7"></td><td index="8"></td><td index="9"></td><td index="10"></td><td index="11"></td><td index="12"></td><td index="13"></td><td index="14"></td><td index="15"></td><td index="16"></td><td index="17"></td><td index="18"></td><td index="19"></td><td index="20"></td></tr><tr index="14"><td index="1"></td><td index="2"></td><td index="3"></td><td index="4"></td><td index="5"></td><td index="6"></td><td index="7"></td><td index="8"></td><td index="9"></td><td index="10"></td><td index="11"></td><td index="12"></td><td index="13"></td><td index="14"></td><td index="15"></td><td index="16"></td><td index="17"></td><td index="18"></td><td index="19"></td><td index="20"></td></tr><tr index="15"><td index="1"></td><td index="2"></td><td index="3"></td><td index="4"></td><td index="5"></td><td index="6"></td><td index="7"></td><td index="8"></td><td index="9"></td><td index="10"></td><td index="11"></td><td index="12"></td><td index="13"></td><td index="14"></td><td index="15"></td><td index="16"></td><td index="17"></td><td index="18"></td><td index="19"></td><td index="20"></td></tr></tbody></table>
+                            <div class="choose-table-footer">
+                                <span>0</span>
+                                <span> 行 </span>
+                                <span>0</span>
+                                <span> 列 </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="am-dropdown" data-am-dropdown>
+                        <button type="button" class="am-btn am-btn-iutils am-dropdown-toggle" title="表情"><i class="am-icon-smile-o"></i></button>
+                        <ul class="am-dropdown-content" style="width: 320px;padding: 5px;">
+                            <li class="smile"><img src="img/qq/1.gif" /></li>
+                            <li class="smile"><img src="img/qq/2.gif" /></li>
+                            <li class="smile"><img src="img/qq/3.gif" /></li>
+                            <li class="smile"><img src="img/qq/4.gif" /></li>
+                            <li class="smile"><img src="img/qq/5.gif" /></li>
+                            <li class="smile"><img src="img/qq/6.gif" /></li>
+                            <li class="smile"><img src="img/qq/7.gif" /></li>
+                            <li class="smile"><img src="img/qq/8.gif" /></li>
+                            <li class="smile"><img src="img/qq/9.gif" /></li>
+                            <li class="smile"><img src="img/qq/10.gif" /></li>
+                            <li class="smile"><img src="img/qq/11.gif" /></li>
+                            <li class="smile"><img src="img/qq/12.gif" /></li>
+                            <li class="smile"><img src="img/qq/13.gif" /></li>
+                            <li class="smile"><img src="img/qq/14.gif" /></li>
+                            <li class="smile"><img src="img/qq/15.gif" /></li>
+                            <li class="smile"><img src="img/qq/16.gif" /></li>
+                            <li class="smile"><img src="img/qq/17.gif" /></li>
+                            <li class="smile"><img src="img/qq/18.gif" /></li>
+                            <li class="smile"><img src="img/qq/19.gif" /></li>
+                            <li class="smile"><img src="img/qq/20.gif" /></li>
+                            <li class="smile"><img src="img/qq/21.gif" /></li>
+                            <li class="smile"><img src="img/qq/22.gif" /></li>
+                        </ul>
+                    </div>
+                    <button type="button" class="am-btn am-btn-iutils" title="图片"><i class="am-icon-picture-o"></i><input type="file" id="file" name="file" style="display:none;" /></button>
+                    <button type="button" class="am-btn am-btn-iutils" title="文件"><i class="am-icon-folder-o"></i></button>
+                    <div class="am-dropdown" data-am-dropdown>
+                        <button type="button" class="am-btn am-btn-iutils am-dropdown-toggle" title="在线视频"><i class="am-icon-video-camera"></i></button>
+                        <div class="am-dropdown-content" style="width: 312px;">
+                            <form class="am-form am-form-horizontal">
+                                <div class="am-form-group">
+                                    <div class="am-u-sm-12">
+                                        <textarea rows="5"><iframe height=498 width=510 src='[视频地址]' frameborder=0 'allowfullscreen'></iframe></textarea>
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <div class="am-u-sm-12">
+                                        <button type="button" class="am-btn am-btn-default am-btn-xs am-align-right" style="margin-bottom:0;">提交</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!--<div class="am-dropdown" data-am-dropdown>-->
+                        <!--<button type="button" class="am-btn am-btn-iutils iutils-map am-dropdown-toggle" title="地图"><i class="am-icon-map-marker"></i></button>-->
+                        <!--<div class="am-dropdown-content" style="width: 312px;">-->
+                            <!--<form class="am-form am-form-horizontal">-->
+                                <!--<div class="am-form-group">-->
+                                    <!--<div class="am-u-sm-12">-->
+
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="am-form-group">-->
+                                    <!--<div class="am-u-sm-12">-->
+                                        <!--<button type="button" class="am-btn am-btn-default am-btn-xs am-align-right" style="margin-bottom:0;">提交</button>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</form>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <div class="am-dropdown" data-am-dropdown>
+                        <button type="button" class="am-btn am-btn-iutils am-dropdown-toggle" title="插入代码"><i class="am-icon-terminal"></i></button>
+                        <div class="am-dropdown-content" style="width: 312px;">
+                            <form class="am-form am-form-horizontal">
+                                <div class="am-form-group">
+                                    <div class="am-u-sm-12">
+                                        <textarea rows="5"></textarea>
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <div class="am-u-sm-12">
+                                        <button type="button" class="am-btn am-btn-default am-btn-xs am-align-right" style="margin-bottom:0;">提交</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="am-btn-group am-btn-group-xs">
+                    <button type="button" class="am-btn am-btn-iutils" title="撤销"><i class="am-icon-undo"></i></button>
+                    <button type="button" class="am-btn am-btn-iutils" title="重复"><i class="am-icon-repeat"></i></button>
+                    <button type="button" class="am-btn am-btn-iutils" title="全屏"><i class="am-icon-expand"></i></button>
+                </div>
+            </div>
+        </div>
+        <textarea class="iutilsEditor-code"></textarea>
+        <div class="iutilsEditor-content" contenteditable="true"></div>
+    </div>
+    <script>
+        $(document).ready(function(){
+
+        });
+    </script>
+</body>
+</html>

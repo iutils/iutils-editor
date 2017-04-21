@@ -1,0 +1,106 @@
+.iutilsEditor{
+    border: 1px solid #ddd;
+}
+.iutilsEditor-fullscreen {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10000;
+}
+.iutilsEditor-fullscreen .iutilsEditor-code,.iutilsEditor-fullscreen .iutilsEditor-content{
+    height: 100%;
+}
+.iutilsEditor-tools{
+    height: 28px;
+}
+.iutilsEditor-tools .am-dropdown-content{
+    padding: 8px 0px 5px 0px;
+    margin: 0;
+    width: 200px;
+}
+.iutilsEditor-tools .am-dropdown-content .am-form-label{
+    padding-left:0;
+    padding-right:0;
+    font-size: 12px;
+}
+.iutilsEditor-tools .am-dropdown-content .am-form-group{
+    margin-bottom:5px;
+}
+.iutilsEditor-tools .am-form input[type=text]{
+    font-size: 12px;
+}
+.iutilsEditor-tools h1, .iutilsEditor-tools h2, .iutilsEditor-tools h3, .iutilsEditor-tools h4, .iutilsEditor-tools h5, .iutilsEditor-tools h6{
+    margin:0;
+}
+.iutilsEditor-tools .am-btn-group{
+    border-right: 1px solid #eee;
+}
+.iutilsEditor-tools .am-btn-group:last-child{
+    border-right:none;
+}
+.iutilsEditor-content{
+    margin: 0;
+    padding: 10px;
+    width: 100%;
+    min-height: 220px;
+    overflow-y: auto;
+    display: block;
+    box-sizing: border-box;
+    border-top: 1px solid #eee;
+    outline:none;
+    font-size: 14px;
+    background-color: #fff;
+}
+.iutilsEditor-code{
+    margin: 0;
+    padding: 10px;
+    width: 100%;
+    min-height: 220px;
+    overflow-y: auto;
+    display: block;
+    box-sizing: border-box;
+    border:none;
+    border-top: 1px solid #eee;
+    outline:none;
+    resize: none;
+    display: none;
+}
+.am-btn-iutils{
+    color: #444;
+    background-color: #fff;
+    border-color: transparent;
+    font-size: 12px;
+}
+.am-btn-iutils:hover,.am-btn-iutils:active{
+    background-color: #e7e7e7;
+    color: #0e90d2;
+}
+.am-btn-iutils.active{
+    color: #0e90d2;
+}
+.smile{
+    float: left;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    margin: 0 2px;
+}
+.iutilsEditor-tools table.choose-table td {
+    border: 1px solid #ccc;
+    width: 14px;
+    height: 14px;
+}
+.iutilsEditor-tools div.choose-table-footer{
+    float:right;
+    margin-top:5px;
+    font-size: 14px;
+}
+.iutilsEditor-tools .am-form-group .am-u-sm-12,.iutilsEditor-tools .am-form-group .am-u-sm-8{
+    padding-left:7px;
+    padding-right:7px;
+}
+.iutilsEditor-content h1,.iutilsEditor-content h2,.iutilsEditor-content h3,.iutilsEditor-content h4,.iutilsEditor-content h5,.iutilsEditor-content h6{
+    margin: 0;
+}

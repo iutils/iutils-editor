@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>iutils - 编辑器演示</title>
+    <link rel="stylesheet" href="3rd-lib/amazeui/css/amazeui.min.css" />
+    <link rel="stylesheet" href="css/iutilsEditor.css" />
+    <script src="3rd-lib/jquery/2.2.3/jquery.min.js"></script>
+    <script src="3rd-lib/amazeui/js/amazeui.min.js"></script>
+    <script src="js/iutilsEditor.js"></script>
+</head>
+<body style="padding: 50px;">
+    <p>iutils 编辑器演示</p>
+    <textarea id="content" name="content"></textarea>
+
+    <p>iutils 多编辑器演示</p>
+    <textarea id="content2" name="content2"></textarea>
+    <script>
+        $(document).ready(function(){
+            $("#content").iutilsEditor();
+
+            $("#content2").iutilsEditor();
+        });
+    </script>
+</body>
+</html>
