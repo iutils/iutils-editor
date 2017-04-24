@@ -49,7 +49,7 @@
                                 if(editor.find(".iutilsEditor-code").val()!=""){
                                     var selObj = getSelObj();
                                     var currentEle=null;//当前元素
-                                    if(selObj!=null){
+                                    if(selObj!=null && selObj.baseNode!=null){
                                         currentEle = $(selObj.baseNode.parentNode);
                                     }
                                     if(currentEle!=null){
@@ -80,8 +80,16 @@
                             var $this = $(this);
                             var selObj = getSelObj();
                             var currentEle=null;//当前元素
-                            if(selObj!=null){
+                            if(selObj!=null && selObj.baseNode!=null){
                                 currentEle = $(selObj.baseNode.parentNode);
+                            }
+                            //判断当前节点是否可操作
+                            if(currentEle!=null || currentEle.hasClass("iutilsEditor-content") || currentEle.hasClass("iutilsEditor") || currentEle.hasClass("no-op")){
+                                return;
+                            }
+                            //过滤掉不能操作的元素
+                            if(currentEle.hasClass("no-op")){
+                                return;
                             }
                             //点亮菜单
                             if(!$this.hasClass('active')){
@@ -116,8 +124,12 @@
                             var $this = $(this);
                             var selObj = getSelObj();
                             var currentEle=null;//当前元素
-                            if(selObj!=null){
+                            if(selObj!=null && selObj.baseNode!=null){
                                 currentEle = $(selObj.baseNode.parentNode);
+                            }
+                            //判断当前节点是否可操作
+                            if(currentEle!=null || currentEle.hasClass("iutilsEditor-content") || currentEle.hasClass("iutilsEditor") || currentEle.hasClass("no-op")){
+                                return;
                             }
                             //点亮菜单
                             if(!$this.hasClass('active')){
@@ -152,8 +164,12 @@
                             var $this = $(this);
                             var selObj = getSelObj();
                             var currentEle=null;//当前元素
-                            if(selObj!=null){
+                            if(selObj!=null && selObj.baseNode!=null){
                                 currentEle = $(selObj.baseNode.parentNode);
+                            }
+                            //判断当前节点是否可操作
+                            if(currentEle!=null || currentEle.hasClass("iutilsEditor-content") || currentEle.hasClass("iutilsEditor") || currentEle.hasClass("no-op")){
+                                return;
                             }
                             //点亮菜单
                             if(!$this.hasClass('active')){
@@ -190,8 +206,12 @@
                             var $this = $(this);
                             var selObj = getSelObj();
                             var currentEle=null;//当前元素
-                            if(selObj!=null){
+                            if(selObj!=null && selObj.baseNode!=null){
                                 currentEle = $(selObj.baseNode.parentNode);
+                            }
+                            //判断当前节点是否可操作
+                            if(currentEle!=null || currentEle.hasClass("iutilsEditor-content") || currentEle.hasClass("iutilsEditor") || currentEle.hasClass("no-op")){
+                                return;
                             }
                             //点亮菜单
                             if(!$this.hasClass('active')){
@@ -227,8 +247,12 @@
                         editor.find('.iutilsEditor-tools').on('click','button.eraser',function(){
                             var selObj = getSelObj();
                             var currentEle=null;//当前元素
-                            if(selObj!=null){
+                            if(selObj!=null && selObj.baseNode!=null){
                                 currentEle = $(selObj.baseNode.parentNode);
+                            }
+                            //判断当前节点是否可操作
+                            if(currentEle!=null || currentEle.hasClass("iutilsEditor-content") || currentEle.hasClass("iutilsEditor") || currentEle.hasClass("no-op")){
+                                return;
                             }
                             if(currentEle!=null){
                                 var text = currentEle.text();
@@ -258,18 +282,18 @@
                     {type:"list-ul",i:'am-icon-list-ul',desc:'无序列表',init: function (editor) {
                         editor.find('.iutilsEditor-tools').on('click','button.list-ul',function(){
                             if(editor.find(".iutilsEditor-content").html()=="<div><br></div>"){
-                                editor.find(".iutilsEditor-content").html('<ul><li><br></li></ul>');
+                                editor.find(".iutilsEditor-content").html('<ul class="no-op"><li><br></li></ul>');
                             }else{
-                                editor.find(".iutilsEditor-content").append('<ul><li><br></li></ul>');
+                                editor.find(".iutilsEditor-content").append('<ul class="no-op"><li><br></li></ul>');
                             }
                         });
                     }},
                     {type:"list-ol",i:'am-icon-list-ol',desc:'有序列表',init: function (editor) {
                         editor.find('.iutilsEditor-tools').on('click','button.list-ol',function(){
                             if(editor.find(".iutilsEditor-content").html()=="<div><br></div>"){
-                                editor.find(".iutilsEditor-content").html('<ol><li><br></li></ol>');
+                                editor.find(".iutilsEditor-content").html('<ol class="no-op"><li><br></li></ol>');
                             }else{
-                                editor.find(".iutilsEditor-content").append('<ol><li><br></li></ol>');
+                                editor.find(".iutilsEditor-content").append('<ol class="no-op"><li><br></li></ol>');
                             }
                         })
                     }},
@@ -278,8 +302,12 @@
                             var $this = $(this);
                             var selObj = getSelObj();
                             var currentEle=null;//当前元素
-                            if(selObj!=null){
+                            if(selObj!=null && selObj.baseNode!=null){
                                 currentEle = $(selObj.baseNode.parentNode);
+                            }
+                            //判断当前节点是否可操作
+                            if(currentEle!=null || currentEle.hasClass("iutilsEditor-content") || currentEle.hasClass("iutilsEditor") || currentEle.hasClass("no-op")){
+                                return;
                             }
                             //点亮菜单
                             if(!$this.hasClass('active')){
@@ -318,8 +346,12 @@
                             var $this = $(this);
                             var selObj = getSelObj();
                             var currentEle=null;//当前元素
-                            if(selObj!=null){
+                            if(selObj!=null && selObj.baseNode!=null){
                                 currentEle = $(selObj.baseNode.parentNode);
+                            }
+                            //判断当前节点是否可操作
+                            if(currentEle!=null || currentEle.hasClass("iutilsEditor-content") || currentEle.hasClass("iutilsEditor") || currentEle.hasClass("no-op")){
+                                return;
                             }
                             //点亮菜单
                             if(!$this.hasClass('active')){
@@ -358,8 +390,12 @@
                             var $this = $(this);
                             var selObj = getSelObj();
                             var currentEle=null;//当前元素
-                            if(selObj!=null){
+                            if(selObj!=null && selObj.baseNode!=null){
                                 currentEle = $(selObj.baseNode.parentNode);
+                            }
+                            //判断当前节点是否可操作
+                            if(currentEle!=null || currentEle.hasClass("iutilsEditor-content") || currentEle.hasClass("iutilsEditor") || currentEle.hasClass("no-op")){
+                                return;
                             }
                             //点亮菜单
                             if(!$this.hasClass('active')){
@@ -397,8 +433,12 @@
                         editor.find('.iutilsEditor-tools').on('click','button.text-height',function(){
                             var selObj = getSelObj();
                             var currentEle=null;//当前元素
-                            if(selObj!=null){
+                            if(selObj!=null && selObj.baseNode!=null){
                                 currentEle = $(selObj.baseNode.parentNode);
+                            }
+                            //判断当前节点是否可操作
+                            if(currentEle!=null || currentEle.hasClass("iutilsEditor-content") || currentEle.hasClass("iutilsEditor") || currentEle.hasClass("no-op")){
+                                return;
                             }
                             if(currentEle!=null){
                                 var lineHeight = currentEle.css("line-height");
@@ -416,8 +456,12 @@
                         editor.find('.iutilsEditor-tools').on('click','button.text-width',function(){
                             var selObj = getSelObj();
                             var currentEle=null;//当前元素
-                            if(selObj!=null){
+                            if(selObj!=null && selObj.baseNode!=null){
                                 currentEle = $(selObj.baseNode.parentNode);
+                            }
+                            //判断当前节点是否可操作
+                            if(currentEle!=null || currentEle.hasClass("iutilsEditor-content") || currentEle.hasClass("iutilsEditor") || currentEle.hasClass("no-op")){
+                                return;
                             }
                             if(currentEle!=null){
                                 var letterSpacing = currentEle.css("letter-spacing");
@@ -458,8 +502,12 @@
                         editor.find('.iutilsEditor-tools').find('button.unlink').on('click',function(){
                             var selObj = getSelObj();
                             var currentEle=null;//当前元素
-                            if(selObj!=null){
+                            if(selObj!=null && selObj.baseNode!=null){
                                 currentEle = $(selObj.baseNode.parentNode);
+                            }
+                            //判断当前节点是否可操作
+                            if(currentEle!=null || currentEle.hasClass("iutilsEditor-content") || currentEle.hasClass("iutilsEditor") || currentEle.hasClass("no-op")){
+                                return;
                             }
                             if(currentEle!=null && currentEle.is('a')){
                                 var html = currentEle.parent().html();
@@ -468,7 +516,7 @@
                             }
                         });
                     }},
-                    {type:"table",i:'am-icon-table',html:'<div class="am-dropdown-content" style="width: 291px;padding:10px;"><table class="choose-table"><tbody><tr index="1"><td index="1"></td><td index="2"></td><td index="3"></td><td index="4"></td><td index="5"></td><td index="6"></td><td index="7"></td><td index="8"></td><td index="9"></td><td index="10"></td><td index="11"></td><td index="12"></td><td index="13"></td><td index="14"></td><td index="15"></td><td index="16"></td><td index="17"></td><td index="18"></td><td index="19"></td><td index="20"></td></tr><tr index="2"><td index="1"></td><td index="2"></td><td index="3"></td><td index="4"></td><td index="5"></td><td index="6"></td><td index="7"></td><td index="8"></td><td index="9"></td><td index="10"></td><td index="11"></td><td index="12"></td><td index="13"></td><td index="14"></td><td index="15"></td><td index="16"></td><td index="17"></td><td index="18"></td><td index="19"></td><td index="20"></td></tr><tr index="3"><td index="1"></td><td index="2"></td><td index="3"></td><td index="4"></td><td index="5"></td><td index="6"></td><td index="7"></td><td index="8"></td><td index="9"></td><td index="10"></td><td index="11"></td><td index="12"></td><td index="13"></td><td index="14"></td><td index="15"></td><td index="16"></td><td index="17"></td><td index="18"></td><td index="19"></td><td index="20"></td></tr><tr index="4"><td index="1"></td><td index="2"></td><td index="3"></td><td index="4"></td><td index="5"></td><td index="6"></td><td index="7"></td><td index="8"></td><td index="9"></td><td index="10"></td><td index="11"></td><td index="12"></td><td index="13"></td><td index="14"></td><td index="15"></td><td index="16"></td><td index="17"></td><td index="18"></td><td index="19"></td><td index="20"></td></tr><tr index="5"><td index="1"></td><td index="2"></td><td index="3"></td><td index="4"></td><td index="5"></td><td index="6"></td><td index="7"></td><td index="8"></td><td index="9"></td><td index="10"></td><td index="11"></td><td index="12"></td><td index="13"></td><td index="14"></td><td index="15"></td><td index="16"></td><td index="17"></td><td index="18"></td><td index="19"></td><td index="20"></td></tr><tr index="6"><td index="1"></td><td index="2"></td><td index="3"></td><td index="4"></td><td index="5"></td><td index="6"></td><td index="7"></td><td index="8"></td><td index="9"></td><td index="10"></td><td index="11"></td><td index="12"></td><td index="13"></td><td index="14"></td><td index="15"></td><td index="16"></td><td index="17"></td><td index="18"></td><td index="19"></td><td index="20"></td></tr><tr index="7"><td index="1"></td><td index="2"></td><td index="3"></td><td index="4"></td><td index="5"></td><td index="6"></td><td index="7"></td><td index="8"></td><td index="9"></td><td index="10"></td><td index="11"></td><td index="12"></td><td index="13"></td><td index="14"></td><td index="15"></td><td index="16"></td><td index="17"></td><td index="18"></td><td index="19"></td><td index="20"></td></tr><tr index="8"><td index="1"></td><td index="2"></td><td index="3"></td><td index="4"></td><td index="5"></td><td index="6"></td><td index="7"></td><td index="8"></td><td index="9"></td><td index="10"></td><td index="11"></td><td index="12"></td><td index="13"></td><td index="14"></td><td index="15"></td><td index="16"></td><td index="17"></td><td index="18"></td><td index="19"></td><td index="20"></td></tr><tr index="9"><td index="1"></td><td index="2"></td><td index="3"></td><td index="4"></td><td index="5"></td><td index="6"></td><td index="7"></td><td index="8"></td><td index="9"></td><td index="10"></td><td index="11"></td><td index="12"></td><td index="13"></td><td index="14"></td><td index="15"></td><td index="16"></td><td index="17"></td><td index="18"></td><td index="19"></td><td index="20"></td></tr><tr index="10"><td index="1"></td><td index="2"></td><td index="3"></td><td index="4"></td><td index="5"></td><td index="6"></td><td index="7"></td><td index="8"></td><td index="9"></td><td index="10"></td><td index="11"></td><td index="12"></td><td index="13"></td><td index="14"></td><td index="15"></td><td index="16"></td><td index="17"></td><td index="18"></td><td index="19"></td><td index="20"></td></tr><tr index="11"><td index="1"></td><td index="2"></td><td index="3"></td><td index="4"></td><td index="5"></td><td index="6"></td><td index="7"></td><td index="8"></td><td index="9"></td><td index="10"></td><td index="11"></td><td index="12"></td><td index="13"></td><td index="14"></td><td index="15"></td><td index="16"></td><td index="17"></td><td index="18"></td><td index="19"></td><td index="20"></td></tr><tr index="12"><td index="1"></td><td index="2"></td><td index="3"></td><td index="4"></td><td index="5"></td><td index="6"></td><td index="7"></td><td index="8"></td><td index="9"></td><td index="10"></td><td index="11"></td><td index="12"></td><td index="13"></td><td index="14"></td><td index="15"></td><td index="16"></td><td index="17"></td><td index="18"></td><td index="19"></td><td index="20"></td></tr><tr index="13"><td index="1"></td><td index="2"></td><td index="3"></td><td index="4"></td><td index="5"></td><td index="6"></td><td index="7"></td><td index="8"></td><td index="9"></td><td index="10"></td><td index="11"></td><td index="12"></td><td index="13"></td><td index="14"></td><td index="15"></td><td index="16"></td><td index="17"></td><td index="18"></td><td index="19"></td><td index="20"></td></tr><tr index="14"><td index="1"></td><td index="2"></td><td index="3"></td><td index="4"></td><td index="5"></td><td index="6"></td><td index="7"></td><td index="8"></td><td index="9"></td><td index="10"></td><td index="11"></td><td index="12"></td><td index="13"></td><td index="14"></td><td index="15"></td><td index="16"></td><td index="17"></td><td index="18"></td><td index="19"></td><td index="20"></td></tr><tr index="15"><td index="1"></td><td index="2"></td><td index="3"></td><td index="4"></td><td index="5"></td><td index="6"></td><td index="7"></td><td index="8"></td><td index="9"></td><td index="10"></td><td index="11"></td><td index="12"></td><td index="13"></td><td index="14"></td><td index="15"></td><td index="16"></td><td index="17"></td><td index="18"></td><td index="19"></td><td index="20"></td></tr></tbody></table><div class="choose-table-footer"><span>0</span><span> 行 </span><span>0</span><span> 列 </span></div></div>',desc:'表格',
+                    {type:"table",i:'am-icon-table',html:'<div class="am-dropdown-content" style="width: 291px;padding:10px;"><table class="choose-table no-op"><tbody class="no-op"><tr class="no-op" index="1"><td class="no-op" index="1"></td><td class="no-op" index="2"></td><td class="no-op" index="3"></td><td class="no-op" index="4"></td><td class="no-op" index="5"></td><td class="no-op" index="6"></td><td class="no-op" index="7"></td><td class="no-op" index="8"></td><td class="no-op" index="9"></td><td class="no-op" index="10"></td><td class="no-op" index="11"></td><td class="no-op" index="12"></td><td class="no-op" index="13"></td><td class="no-op" index="14"></td><td class="no-op" index="15"></td><td class="no-op" index="16"></td><td class="no-op" index="17"></td><td class="no-op" index="18"></td><td class="no-op" index="19"></td><td class="no-op" index="20"></td></tr><tr class="no-op" index="2"><td class="no-op" index="1"></td><td class="no-op" index="2"></td><td class="no-op" index="3"></td><td class="no-op" index="4"></td><td class="no-op" index="5"></td><td class="no-op" index="6"></td><td class="no-op" index="7"></td><td class="no-op" index="8"></td><td class="no-op" index="9"></td><td class="no-op" index="10"></td><td class="no-op" index="11"></td><td class="no-op" index="12"></td><td class="no-op" index="13"></td><td class="no-op" index="14"></td><td class="no-op" index="15"></td><td class="no-op" index="16"></td><td class="no-op" index="17"></td><td class="no-op" index="18"></td><td class="no-op" index="19"></td><td class="no-op" index="20"></td></tr><tr class="no-op" index="3"><td class="no-op" index="1"></td><td class="no-op" index="2"></td><td class="no-op" index="3"></td><td class="no-op" index="4"></td><td class="no-op" index="5"></td><td class="no-op" index="6"></td><td class="no-op" index="7"></td><td class="no-op" index="8"></td><td class="no-op" index="9"></td><td class="no-op" index="10"></td><td class="no-op" index="11"></td><td class="no-op" index="12"></td><td class="no-op" index="13"></td><td class="no-op" index="14"></td><td class="no-op" index="15"></td><td class="no-op" index="16"></td><td class="no-op" index="17"></td><td class="no-op" index="18"></td><td class="no-op" index="19"></td><td class="no-op" index="20"></td></tr><tr class="no-op" index="4"><td class="no-op" index="1"></td><td class="no-op" index="2"></td><td class="no-op" index="3"></td><td class="no-op" index="4"></td><td class="no-op" index="5"></td><td class="no-op" index="6"></td><td class="no-op" index="7"></td><td class="no-op" index="8"></td><td class="no-op" index="9"></td><td class="no-op" index="10"></td><td class="no-op" index="11"></td><td class="no-op" index="12"></td><td class="no-op" index="13"></td><td class="no-op" index="14"></td><td class="no-op" index="15"></td><td class="no-op" index="16"></td><td class="no-op" index="17"></td><td class="no-op" index="18"></td><td class="no-op" index="19"></td><td class="no-op" index="20"></td></tr><tr class="no-op" index="5"><td class="no-op" index="1"></td><td class="no-op" index="2"></td><td class="no-op" index="3"></td><td class="no-op" index="4"></td><td class="no-op" index="5"></td><td class="no-op" index="6"></td><td class="no-op" index="7"></td><td class="no-op" index="8"></td><td class="no-op" index="9"></td><td class="no-op" index="10"></td><td class="no-op" index="11"></td><td class="no-op" index="12"></td><td class="no-op" index="13"></td><td class="no-op" index="14"></td><td class="no-op" index="15"></td><td class="no-op" index="16"></td><td class="no-op" index="17"></td><td class="no-op" index="18"></td><td class="no-op" index="19"></td><td class="no-op" index="20"></td></tr><tr class="no-op" index="6"><td class="no-op" index="1"></td><td class="no-op" index="2"></td><td class="no-op" index="3"></td><td class="no-op" index="4"></td><td class="no-op" index="5"></td><td class="no-op" index="6"></td><td class="no-op" index="7"></td><td class="no-op" index="8"></td><td class="no-op" index="9"></td><td class="no-op" index="10"></td><td class="no-op" index="11"></td><td class="no-op" index="12"></td><td class="no-op" index="13"></td><td class="no-op" index="14"></td><td class="no-op" index="15"></td><td class="no-op" index="16"></td><td class="no-op" index="17"></td><td class="no-op" index="18"></td><td class="no-op" index="19"></td><td class="no-op" index="20"></td></tr><tr class="no-op" index="7"><td class="no-op" index="1"></td><td class="no-op" index="2"></td><td class="no-op" index="3"></td><td class="no-op" index="4"></td><td class="no-op" index="5"></td><td class="no-op" index="6"></td><td class="no-op" index="7"></td><td class="no-op" index="8"></td><td class="no-op" index="9"></td><td class="no-op" index="10"></td><td class="no-op" index="11"></td><td class="no-op" index="12"></td><td class="no-op" index="13"></td><td class="no-op" index="14"></td><td class="no-op" index="15"></td><td class="no-op" index="16"></td><td class="no-op" index="17"></td><td class="no-op" index="18"></td><td class="no-op" index="19"></td><td class="no-op" index="20"></td></tr><tr class="no-op" index="8"><td class="no-op" index="1"></td><td class="no-op" index="2"></td><td class="no-op" index="3"></td><td class="no-op" index="4"></td><td class="no-op" index="5"></td><td class="no-op" index="6"></td><td class="no-op" index="7"></td><td class="no-op" index="8"></td><td class="no-op" index="9"></td><td class="no-op" index="10"></td><td class="no-op" index="11"></td><td class="no-op" index="12"></td><td class="no-op" index="13"></td><td class="no-op" index="14"></td><td class="no-op" index="15"></td><td class="no-op" index="16"></td><td class="no-op" index="17"></td><td class="no-op" index="18"></td><td class="no-op" index="19"></td><td class="no-op" index="20"></td></tr><tr class="no-op" index="9"><td class="no-op" index="1"></td><td class="no-op" index="2"></td><td class="no-op" index="3"></td><td class="no-op" index="4"></td><td class="no-op" index="5"></td><td class="no-op" index="6"></td><td class="no-op" index="7"></td><td class="no-op" index="8"></td><td class="no-op" index="9"></td><td class="no-op" index="10"></td><td class="no-op" index="11"></td><td class="no-op" index="12"></td><td class="no-op" index="13"></td><td class="no-op" index="14"></td><td class="no-op" index="15"></td><td class="no-op" index="16"></td><td class="no-op" index="17"></td><td class="no-op" index="18"></td><td class="no-op" index="19"></td><td class="no-op" index="20"></td></tr><tr class="no-op" index="10"><td class="no-op" index="1"></td><td class="no-op" index="2"></td><td class="no-op" index="3"></td><td class="no-op" index="4"></td><td class="no-op" index="5"></td><td class="no-op" index="6"></td><td class="no-op" index="7"></td><td class="no-op" index="8"></td><td class="no-op" index="9"></td><td class="no-op" index="10"></td><td class="no-op" index="11"></td><td class="no-op" index="12"></td><td class="no-op" index="13"></td><td class="no-op" index="14"></td><td class="no-op" index="15"></td><td class="no-op" index="16"></td><td class="no-op" index="17"></td><td class="no-op" index="18"></td><td class="no-op" index="19"></td><td class="no-op" index="20"></td></tr><tr class="no-op" index="11"><td class="no-op" index="1"></td><td class="no-op" index="2"></td><td class="no-op" index="3"></td><td class="no-op" index="4"></td><td class="no-op" index="5"></td><td class="no-op" index="6"></td><td class="no-op" index="7"></td><td class="no-op" index="8"></td><td class="no-op" index="9"></td><td class="no-op" index="10"></td><td class="no-op" index="11"></td><td class="no-op" index="12"></td><td class="no-op" index="13"></td><td class="no-op" index="14"></td><td class="no-op" index="15"></td><td class="no-op" index="16"></td><td class="no-op" index="17"></td><td class="no-op" index="18"></td><td class="no-op" index="19"></td><td class="no-op" index="20"></td></tr><tr class="no-op" index="12"><td class="no-op" index="1"></td><td class="no-op" index="2"></td><td class="no-op" index="3"></td><td class="no-op" index="4"></td><td class="no-op" index="5"></td><td class="no-op" index="6"></td><td class="no-op" index="7"></td><td class="no-op" index="8"></td><td class="no-op" index="9"></td><td class="no-op" index="10"></td><td class="no-op" index="11"></td><td class="no-op" index="12"></td><td class="no-op" index="13"></td><td class="no-op" index="14"></td><td class="no-op" index="15"></td><td class="no-op" index="16"></td><td class="no-op" index="17"></td><td class="no-op" index="18"></td><td class="no-op" index="19"></td><td class="no-op" index="20"></td></tr><tr class="no-op" index="13"><td class="no-op" index="1"></td><td class="no-op" index="2"></td><td class="no-op" index="3"></td><td class="no-op" index="4"></td><td class="no-op" index="5"></td><td class="no-op" index="6"></td><td class="no-op" index="7"></td><td class="no-op" index="8"></td><td class="no-op" index="9"></td><td class="no-op" index="10"></td><td class="no-op" index="11"></td><td class="no-op" index="12"></td><td class="no-op" index="13"></td><td class="no-op" index="14"></td><td class="no-op" index="15"></td><td class="no-op" index="16"></td><td class="no-op" index="17"></td><td class="no-op" index="18"></td><td class="no-op" index="19"></td><td class="no-op" index="20"></td></tr><tr class="no-op" index="14"><td class="no-op" index="1"></td><td class="no-op" index="2"></td><td class="no-op" index="3"></td><td class="no-op" index="4"></td><td class="no-op" index="5"></td><td class="no-op" index="6"></td><td class="no-op" index="7"></td><td class="no-op" index="8"></td><td class="no-op" index="9"></td><td class="no-op" index="10"></td><td class="no-op" index="11"></td><td class="no-op" index="12"></td><td class="no-op" index="13"></td><td class="no-op" index="14"></td><td class="no-op" index="15"></td><td class="no-op" index="16"></td><td class="no-op" index="17"></td><td class="no-op" index="18"></td><td class="no-op" index="19"></td><td class="no-op" index="20"></td></tr><tr class="no-op" index="15"><td class="no-op" index="1"></td><td class="no-op" index="2"></td><td class="no-op" index="3"></td><td class="no-op" index="4"></td><td class="no-op" index="5"></td><td class="no-op" index="6"></td><td class="no-op" index="7"></td><td class="no-op" index="8"></td><td class="no-op" index="9"></td><td class="no-op" index="10"></td><td class="no-op" index="11"></td><td class="no-op" index="12"></td><td class="no-op" index="13"></td><td class="no-op" index="14"></td><td class="no-op" index="15"></td><td class="no-op" index="16"></td><td class="no-op" index="17"></td><td class="no-op" index="18"></td><td class="no-op" index="19"></td><td class="no-op" index="20"></td></tr></tbody></table><div class="choose-table-footer"><span>0</span><span> 行 </span><span>0</span><span> 列 </span></div></div>',desc:'表格',
                         init: function (editor) {
                             var buttton = editor.find('.iutilsEditor-tools').find('button.table');
                             var dropdownContent = buttton.next('.am-dropdown-content');
@@ -581,7 +629,7 @@
                             });
                         });
                     }},
-                    {type:"video",i:'am-icon-video-camera',html:'<div class="am-dropdown-content" style="width: 312px;"><form class="am-form am-form-horizontal"><div class="am-form-group"><div class="am-u-sm-12"><textarea rows="5"><iframe height=498 width=510 src=\'[视频地址]\' frameborder=0 \'allowfullscreen\'></iframe></textarea></div></div><div class="am-form-group"><div class="am-u-sm-12"><button type="button" class="am-btn am-btn-default am-btn-xs am-align-right" style="margin-bottom:0;">确认</button></div></div></form></div>',desc:'在线视频',
+                    {type:"video",i:'am-icon-video-camera',html:'<div class="am-dropdown-content" style="width: 312px;"><form class="am-form am-form-horizontal"><div class="am-form-group"><div class="am-u-sm-12"><textarea rows="5"><iframe class="no-op" height=498 width=510 src=\'[视频地址]\' frameborder=0 \'allowfullscreen\'></iframe></textarea></div></div><div class="am-form-group"><div class="am-u-sm-12"><button type="button" class="am-btn am-btn-default am-btn-xs am-align-right" style="margin-bottom:0;">确认</button></div></div></form></div>',desc:'在线视频',
                         init: function (editor) {
                             var buttton = editor.find('.iutilsEditor-tools').find('button.video');
                             var dropdownContent = buttton.next('.am-dropdown-content');
@@ -701,7 +749,7 @@
         content.mouseup(function(){
             var selObj = getSelObj();
             var currentEle=null;//当前元素
-            if(selObj!=null){
+            if(selObj!=null && selObj.baseNode!=null){
                 currentEle = $(selObj.baseNode.parentNode);
             }
             if(currentEle!=null){
@@ -755,7 +803,7 @@
     function getSmile(){
         var html='';
         for(var i=1;i<=130;i++){
-            html+='<li class="smile"><img src="img/qq/'+i+'.gif" /></li>';
+            html+='<li class="smile"><img class="no-op" src="img/qq/'+i+'.gif" /></li>';
         }
         return html;
     }
