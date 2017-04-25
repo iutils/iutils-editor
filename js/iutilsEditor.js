@@ -44,13 +44,19 @@
                     {type:"font",i:'am-icon-font',html:'<div class="am-dropdown-content"><form class="am-form am-form-horizontal"><div class="am-form-group"><label class="am-u-sm-4 am-form-label">字体：</label><div class="am-u-sm-8"><input type="text" placeholder="如：宋体" value="宋体"></div></div><div class="am-form-group"><label class="am-u-sm-4 am-form-label">字号：</label><div class="am-u-sm-8"><input type="text" placeholder="如：16" value="16"></div></div><div class="am-form-group"><label class="am-u-sm-4 am-form-label">颜色：</label><div class="am-u-sm-8"><input type="text" placeholder="如：#000" value="#000"></div></div><div class="am-form-group"><label class="am-u-sm-4 am-form-label">背景颜色：</label><div class="am-u-sm-8"><input type="text" placeholder="如：#fff" value="#fff"></div></div><div class="am-form-group"><div class="am-u-sm-12"><button type="button" class="am-btn am-btn-default am-btn-xs am-align-right" style="margin-bottom:0;">确认</button></div></div></form></div>',desc:'字体设置',
                         init: function (editor) {
                             var buttton = editor.find('.iutilsEditor-tools').find('button.font');
+                            var currentEle=null;//当前元素
+                            buttton.on('click',function(){
+                                var selObj = getSelObj();
+                                if(selObj!=null && selObj.baseNode!=null){
+                                    currentEle = $(selObj.baseNode.parentNode);
+                                }
+                            });
                             var dropdownContent = buttton.next('.am-dropdown-content');
                             dropdownContent.on('click','button',function(){
                                 if(editor.find(".iutilsEditor-code").val()!=""){
-                                    var selObj = getSelObj();
-                                    var currentEle=null;//当前元素
-                                    if(selObj!=null && selObj.baseNode!=null){
-                                        currentEle = $(selObj.baseNode.parentNode);
+                                    //判断当前节点是否可操作
+                                    if(!isEleOp(currentEle)){
+                                        return;
                                     }
                                     if(currentEle!=null){
                                         dropdownContent.find('input[type=text]').each(function(index){
@@ -479,15 +485,48 @@
                         init: function (editor) {
                             var buttton = editor.find('.iutilsEditor-tools').find('button.link');
                             var dropdownContent = buttton.next('.am-dropdown-content');
+                            var currentEle=null;//当前元素
+                            buttton.on('click',function(){
+                                var selObj = getSelObj();
+                                if(selObj!=null && selObj.baseNode!=null){
+                                    currentEle = $(selObj.baseNode.parentNode);
+                                }
+                                //判断当前节点是否可操作
+                                if(!isEleOp(currentEle)){
+                                    return;
+                                }
+                                //初始化选中连接
+                                if(currentEle!=null){
+                                    var input = dropdownContent.find('input[type=text]');
+                                    if(currentEle.is('a')){
+                                        input.eq(0).val(currentEle.html());
+                                        input.eq(1).val(currentEle.attr("href"))
+                                    }else{
+                                        input.eq(0).val(selObj.toString());
+                                        input.eq(1).val("http://");
+                                    }
+                                }
+                            });
                             dropdownContent.on('click','button',function(){
                                 var input = dropdownContent.find('input[type=text]');
                                 var txt = input.eq(0).val();
                                 var url = input.eq(1).val();
                                 if(txt!="" && url!=""){
-                                    if(editor.find(".iutilsEditor-content").html()=="<div><br></div>"){
-                                        editor.find(".iutilsEditor-content").html('<div><a href="'+url+'" target="_blank">'+txt+'</a></div>');
+                                    if(currentEle!=null){
+                                        if(currentEle.is('a')){
+                                            currentEle.html(txt);
+                                            currentEle.attr("href",url);
+                                        }else{
+                                            var html = currentEle.html();
+                                            html = html.replace(new RegExp(txt,"gm"),"<a href='"+url+"' target='_blank'>"+txt+"</a>");
+                                            currentEle.html(html);
+                                        }
                                     }else{
-                                        editor.find(".iutilsEditor-content").append('<div><a href="'+url+'" target="_blank">'+txt+'</a></div>');
+                                        if(editor.find(".iutilsEditor-content").html()=="<div><br></div>"){
+                                            editor.find(".iutilsEditor-content").html('<div><a href="'+url+'" target="_blank">'+txt+'</a></div>');
+                                        }else{
+                                            editor.find(".iutilsEditor-content").append('<div><a href="'+url+'" target="_blank">'+txt+'</a></div>');
+                                        }
                                     }
                                 }
                                 //关闭弹出框
