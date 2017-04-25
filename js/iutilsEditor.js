@@ -75,6 +75,8 @@
                                                 }
                                             }
                                         });
+                                        //同步数据
+                                        syncData(editor);
                                     }
                                 }
                                 //关闭弹出框
@@ -105,6 +107,8 @@
                                         currentEle.html(html);
                                         $this.addClass("active");
                                     }
+                                    //同步数据
+                                    syncData(editor);
                                 }
                             }else{
                                 if(currentEle!=null){
@@ -117,6 +121,8 @@
                                         currentEle.html(html);
                                         $this.removeClass("active");
                                     }
+                                    //同步数据
+                                    syncData(editor);
                                 }
                             }
                         });
@@ -145,6 +151,8 @@
                                         currentEle.html(html);
                                         $this.addClass("active");
                                     }
+                                    //同步数据
+                                    syncData(editor);
                                 }
                             }else{
                                 if(currentEle!=null){
@@ -157,6 +165,8 @@
                                         currentEle.html(html);
                                         $this.removeClass("active");
                                     }
+                                    //同步数据
+                                    syncData(editor);
                                 }
                             }
                         });
@@ -187,6 +197,8 @@
                                         $this.addClass("active");
                                         editor.find('.iutilsEditor-tools').find('button.strikethrough').removeClass("active");
                                     }
+                                    //同步数据
+                                    syncData(editor);
                                 }
                             }else{
                                 if(currentEle!=null){
@@ -199,6 +211,8 @@
                                         currentEle.html(html);
                                         $this.removeClass("active");
                                     }
+                                    //同步数据
+                                    syncData(editor);
                                 }
                             }
                         });
@@ -229,6 +243,8 @@
                                         $this.addClass("active");
                                         editor.find('.iutilsEditor-tools').find('button.underline').removeClass("active");
                                     }
+                                    //同步数据
+                                    syncData(editor);
                                 }
                             }else{
                                 if(currentEle!=null){
@@ -241,6 +257,8 @@
                                         currentEle.html(html);
                                         $this.removeClass("active");
                                     }
+                                    //同步数据
+                                    syncData(editor);
                                 }
                             }
                         });
@@ -260,6 +278,8 @@
                                 var text = currentEle.text();
                                 currentEle.html(text);
                                 currentEle.removeAttr("style");
+                                //同步数据
+                                syncData(editor);
                             }
                         });
                     }},
@@ -275,6 +295,8 @@
                                 }
                                 //关闭弹出框
                                 buttton.parent().dropdown('close');
+                                //同步数据
+                                syncData(editor);
                             });
                     }}
                 ]
@@ -288,6 +310,8 @@
                             }else{
                                 editor.find(".iutilsEditor-content").append('<ul class="no-op"><li><br></li></ul>');
                             }
+                            //同步数据
+                            syncData(editor);
                         });
                     }},
                     {type:"list-ol",i:'am-icon-list-ol',desc:'有序列表',init: function (editor) {
@@ -297,6 +321,8 @@
                             }else{
                                 editor.find(".iutilsEditor-content").append('<ol class="no-op"><li><br></li></ol>');
                             }
+                            //同步数据
+                            syncData(editor);
                         })
                     }},
                     {type:"align-left",i:'am-icon-align-left',desc:'左对齐',init: function (editor) {
@@ -327,6 +353,8 @@
                                         editor.find('.iutilsEditor-tools').find('button.align-center').removeClass("active");
                                         editor.find('.iutilsEditor-tools').find('button.align-right').removeClass("active");
                                     }
+                                    //同步数据
+                                    syncData(editor);
                                 }
                             }else{
                                 if(currentEle!=null){
@@ -339,6 +367,8 @@
                                         currentEle.html(html);
                                         $this.removeClass("active");
                                     }
+                                    //同步数据
+                                    syncData(editor);
                                 }
                             }
                         });
@@ -371,6 +401,8 @@
                                         editor.find('.iutilsEditor-tools').find('button.align-left').removeClass("active");
                                         editor.find('.iutilsEditor-tools').find('button.align-right').removeClass("active");
                                     }
+                                    //同步数据
+                                    syncData(editor);
                                 }
                             }else{
                                 if(currentEle!=null){
@@ -383,6 +415,8 @@
                                         currentEle.html(html);
                                         $this.removeClass("active");
                                     }
+                                    //同步数据
+                                    syncData(editor);
                                 }
                             }
                         });
@@ -415,6 +449,8 @@
                                         editor.find('.iutilsEditor-tools').find('button.align-left').removeClass("active");
                                         editor.find('.iutilsEditor-tools').find('button.align-center').removeClass("active");
                                     }
+                                    //同步数据
+                                    syncData(editor);
                                 }
                             }else{
                                 if(currentEle!=null){
@@ -427,53 +463,9 @@
                                         currentEle.html(html);
                                         $this.removeClass("active");
                                     }
+                                    //同步数据
+                                    syncData(editor);
                                 }
-                            }
-                        });
-                    }},
-                    {type:"text-height",i:'am-icon-text-height',desc:'文本高度',init: function (editor) {
-                        editor.find('.iutilsEditor-tools').on('click','button.text-height',function(){
-                            var selObj = getSelObj();
-                            var currentEle=null;//当前元素
-                            if(selObj!=null && selObj.baseNode!=null){
-                                currentEle = $(selObj.baseNode.parentNode);
-                            }
-                            //判断当前节点是否可操作
-                            if(!isEleOp(currentEle)){
-                                return;
-                            }
-                            if(currentEle!=null){
-                                var lineHeight = currentEle.css("line-height");
-                                var index = lineHeight.lastIndexOf("px");
-                                if(index>-1){
-                                    lineHeight = parseInt(lineHeight.substring(0,index));
-                                }else{
-                                    lineHeight = parseInt(lineHeight);
-                                }
-                                currentEle.css("line-height",(lineHeight+1)+"px");
-                            }
-                        });
-                    }},
-                    {type:"text-width",i:'am-icon-text-width',desc:'文本宽度',init: function (editor) {
-                        editor.find('.iutilsEditor-tools').on('click','button.text-width',function(){
-                            var selObj = getSelObj();
-                            var currentEle=null;//当前元素
-                            if(selObj!=null && selObj.baseNode!=null){
-                                currentEle = $(selObj.baseNode.parentNode);
-                            }
-                            //判断当前节点是否可操作
-                            if(!isEleOp(currentEle)){
-                                return;
-                            }
-                            if(currentEle!=null){
-                                var letterSpacing = currentEle.css("letter-spacing");
-                                var index = letterSpacing.lastIndexOf("px");
-                                if(index>-1){
-                                    letterSpacing = parseInt(letterSpacing.substring(0,index));
-                                }else{
-                                    letterSpacing = parseInt(letterSpacing);
-                                }
-                                currentEle.css("letter-spacing",(letterSpacing+1)+"px");
                             }
                         });
                     }}
@@ -505,6 +497,8 @@
                                         input.eq(0).val(selObj.toString());
                                         input.eq(1).val("http://");
                                     }
+                                    //同步数据
+                                    syncData(editor);
                                 }
                             });
                             dropdownContent.on('click','button',function(){
@@ -528,6 +522,8 @@
                                             editor.find(".iutilsEditor-content").append('<div><a href="'+url+'" target="_blank">'+txt+'</a></div>');
                                         }
                                     }
+                                    //同步数据
+                                    syncData(editor);
                                 }
                                 //关闭弹出框
                                 buttton.parent().dropdown('close');
@@ -548,6 +544,8 @@
                                 var html = currentEle.parent().html();
                                 html = html.replace(new RegExp('<a href="'+currentEle.attr("href")+'" target="_blank">'+currentEle.html()+'</a>',"gm"),currentEle.html());
                                 currentEle.parent().html(html);
+                                //同步数据
+                                syncData(editor);
                             }
                         });
                     }},
@@ -585,6 +583,8 @@
                                 }else{
                                     editor.find(".iutilsEditor-content").append(table);
                                 }
+                                //同步数据
+                                syncData(editor);
                                 //关闭弹出框
                                 buttton.parent().dropdown('close');
                             });
@@ -598,6 +598,8 @@
                             }else{
                                 editor.find(".iutilsEditor-content").append($(this).html());
                             }
+                            //同步数据
+                            syncData(editor);
                             //关闭弹出框
                             buttton.parent().dropdown('close');
                         });
@@ -677,6 +679,8 @@
                                         editor.find(".iutilsEditor-content").append(textarea.val());
                                     }
                                 }
+                                //同步数据
+                                syncData(editor);
                                 //关闭弹出框
                                 buttton.parent().dropdown('close');
                             });
@@ -694,6 +698,8 @@
                                         editor.find(".iutilsEditor-content").append("<pre class='am-pre-scrollable'>"+textarea.val()+"</pre>");
                                     }
                                 }
+                                //同步数据
+                                syncData(editor);
                                 //关闭弹出框
                                 buttton.parent().dropdown('close');
                             });
@@ -747,10 +753,10 @@
         html += '</div></div><textarea class="iutilsEditor-code"></textarea><div class="iutilsEditor-content" contenteditable="true"></div></div>';
         $(html).insertAfter(this);
         //隐藏定位元素
-        var $textarea = $(this);
-        $textarea.hide();
+        var textarea = $(this);
+        textarea.hide();
         //编辑器对象
-        var editor = $textarea.next();
+        var editor = textarea.next();
         //初始化菜单绑定
         for(var i=0;i<settings.menus.length;i++){
             var groups = settings.menus[i].group;
@@ -769,11 +775,11 @@
         var content = editor.find(".iutilsEditor-content");
         code.on('keydown keyup',function(){
             content.html($(this).val());//同步到内容面板
-            $textarea.val($(this).val());//同步表单内容
+            textarea.val($(this).val());//同步表单内容
         });
         content.on('keydown keyup',function(){
             code.val($(this).html());//同步到源码记录器
-            $textarea.val($(this).html());//同步表单内容
+            textarea.val($(this).html());//同步表单内容
             if($(this).html()=="" || $(this).html()=="<br>"){
                 content.html("<div><br></div>");
             }
@@ -832,6 +838,15 @@
                 }
             }
         });
+    }
+
+    //同步数据
+    function syncData(editor){
+        var code = editor.find(".iutilsEditor-code");//源码对象
+        var content = editor.find(".iutilsEditor-content");//内容对象
+        var textarea = editor.prev();//源码存放对象
+        code.val(content.html());//同步到源码记录器
+        textarea.val(content.html());//同步表单内容
     }
 
     //判断当前节点是否可以操作
