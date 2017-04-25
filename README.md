@@ -18,7 +18,7 @@ menus:[
 按照这个规则就能很方便的新增和修改菜单了，是不是很简单 :smirk: 
 
 # 演示地址
-[http://iutils.oschina.io/iutils-editor](http://iutils.oschina.io/iutils-editor)
+[http://iutils.oschina.io/iutils-editor/demo.html](http://iutils.oschina.io/iutils-editor/demo.html)
 
 # 截图欣赏
 ![编辑器演示](https://git.oschina.net/uploads/images/2017/0421/172635_f8e49e9d_436098.png)
