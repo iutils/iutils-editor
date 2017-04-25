@@ -9,7 +9,8 @@
             {
                 group:[
                     {type:"code",i:'am-icon-code',desc:'代码',init: function (editor) {
-                        editor.find('.iutilsEditor-tools').on('click','button.code',function(){
+                        var tools = editor.find('.iutilsEditor-tools');
+                        tools.on('click','button.code',function(){
                             var $this = $(this);
                             //源码对象
                             var $iutilsEditorCode = editor.find(".iutilsEditor-code");
@@ -21,7 +22,7 @@
                                 $iutilsEditorContent.hide();
                                 $iutilsEditorCode.show();
                                 //禁用工具栏菜单
-                                editor.find('.iutilsEditor-tools').find(".am-btn-iutils").each(function(){
+                                tools.find(".am-btn-iutils").each(function(){
                                     if(!$(this).hasClass('active')){
                                         $(this).attr("disabled",true);
                                     }
@@ -31,7 +32,7 @@
                                 $iutilsEditorCode.hide();
                                 $iutilsEditorContent.show();
                                 //启用工具栏菜单
-                                editor.find('.iutilsEditor-tools').find(".am-btn-iutils").each(function(){
+                                tools.find(".am-btn-iutils").each(function(){
                                     $(this).attr("disabled",false);
                                 });
                             }
@@ -172,7 +173,8 @@
                         });
                     }},
                     {type:"underline",i:'am-icon-underline',desc:'下划线',init: function (editor) {
-                        editor.find('.iutilsEditor-tools').on('click','button.underline',function(){
+                        var tools = editor.find('.iutilsEditor-tools');
+                        tools.on('click','button.underline',function(){
                             var $this = $(this);
                             var selObj = getSelObj();
                             var currentEle=null;//当前元素
@@ -189,13 +191,13 @@
                                     if(currentEle.text().trim()==selObj.toString().trim()){
                                         currentEle.css("text-decoration","underline");
                                         $this.addClass("active");
-                                        editor.find('.iutilsEditor-tools').find('button.strikethrough').removeClass("active");
+                                        tools.find('button.strikethrough').removeClass("active");
                                     }else{
                                         var html = currentEle.html();
                                         html = html.replace(new RegExp(selObj.toString(),"gm"),"<span style='text-decoration:underline;'>"+selObj.toString()+"</span>");
                                         currentEle.html(html);
                                         $this.addClass("active");
-                                        editor.find('.iutilsEditor-tools').find('button.strikethrough').removeClass("active");
+                                        tools.find('button.strikethrough').removeClass("active");
                                     }
                                     //同步数据
                                     syncData(editor);
@@ -218,7 +220,8 @@
                         });
                     }},
                     {type:"strikethrough",i:'am-icon-strikethrough',desc:'删除线',init: function (editor) {
-                        editor.find('.iutilsEditor-tools').on('click','button.strikethrough',function(){
+                        var tools = editor.find('.iutilsEditor-tools');
+                        tools.on('click','button.strikethrough',function(){
                             var $this = $(this);
                             var selObj = getSelObj();
                             var currentEle=null;//当前元素
@@ -235,13 +238,13 @@
                                     if(currentEle.text().trim()==selObj.toString().trim()){
                                         currentEle.css("text-decoration","line-through");
                                         $this.addClass("active");
-                                        editor.find('.iutilsEditor-tools').find('button.underline').removeClass("active");
+                                        tools.find('button.underline').removeClass("active");
                                     }else{
                                         var html = currentEle.html();
                                         html = html.replace(new RegExp(selObj.toString(),"gm"),"<span style='text-decoration:line-through;'>"+selObj.toString()+"</span>");
                                         currentEle.html(html);
                                         $this.addClass("active");
-                                        editor.find('.iutilsEditor-tools').find('button.underline').removeClass("active");
+                                        tools.find('button.underline').removeClass("active");
                                     }
                                     //同步数据
                                     syncData(editor);
@@ -288,10 +291,11 @@
                             var buttton = editor.find('.iutilsEditor-tools').find('button.header');
                             var dropdownContent = buttton.next('.am-dropdown-content');
                             dropdownContent.on('click','a',function(){
-                                if(editor.find(".iutilsEditor-content").html()=="<div><br></div>"){
-                                    editor.find(".iutilsEditor-content").html($(this).html());
+                                var content = editor.find(".iutilsEditor-content");
+                                if(content.html()=="<div><br></div>"){
+                                    content.html($(this).html());
                                 }else{
-                                    editor.find(".iutilsEditor-content").append($(this).html());
+                                    content.append($(this).html());
                                 }
                                 //关闭弹出框
                                 buttton.parent().dropdown('close');
@@ -305,10 +309,11 @@
                 group:[
                     {type:"list-ul",i:'am-icon-list-ul',desc:'无序列表',init: function (editor) {
                         editor.find('.iutilsEditor-tools').on('click','button.list-ul',function(){
-                            if(editor.find(".iutilsEditor-content").html()=="<div><br></div>"){
-                                editor.find(".iutilsEditor-content").html('<ul class="no-op"><li><br></li></ul>');
+                            var content = editor.find(".iutilsEditor-content");
+                            if(content.html()=="<div><br></div>"){
+                                content.html('<ul class="no-op"><li><br></li></ul>');
                             }else{
-                                editor.find(".iutilsEditor-content").append('<ul class="no-op"><li><br></li></ul>');
+                                content.append('<ul class="no-op"><li><br></li></ul>');
                             }
                             //同步数据
                             syncData(editor);
@@ -316,17 +321,19 @@
                     }},
                     {type:"list-ol",i:'am-icon-list-ol',desc:'有序列表',init: function (editor) {
                         editor.find('.iutilsEditor-tools').on('click','button.list-ol',function(){
-                            if(editor.find(".iutilsEditor-content").html()=="<div><br></div>"){
-                                editor.find(".iutilsEditor-content").html('<ol class="no-op"><li><br></li></ol>');
+                            var content = editor.find(".iutilsEditor-content");
+                            if(content.html()=="<div><br></div>"){
+                                content.html('<ol class="no-op"><li><br></li></ol>');
                             }else{
-                                editor.find(".iutilsEditor-content").append('<ol class="no-op"><li><br></li></ol>');
+                                content.append('<ol class="no-op"><li><br></li></ol>');
                             }
                             //同步数据
                             syncData(editor);
                         })
                     }},
                     {type:"align-left",i:'am-icon-align-left',desc:'左对齐',init: function (editor) {
-                        editor.find('.iutilsEditor-tools').on('click','button.align-left',function(){
+                        var tools = editor.find('.iutilsEditor-tools');
+                        tools.on('click','button.align-left',function(){
                             var $this = $(this);
                             var selObj = getSelObj();
                             var currentEle=null;//当前元素
@@ -343,15 +350,15 @@
                                     if(currentEle.text().trim()==selObj.toString().trim()){
                                         currentEle.css("text-align","left");
                                         $this.addClass("active");
-                                        editor.find('.iutilsEditor-tools').find('button.align-center').removeClass("active");
-                                        editor.find('.iutilsEditor-tools').find('button.align-right').removeClass("active");
+                                        tools.find('button.align-center').removeClass("active");
+                                        tools.find('button.align-right').removeClass("active");
                                     }else{
                                         var html = currentEle.html();
                                         html = html.replace(new RegExp(selObj.toString(),"gm"),"<span style='text-align:left;'>"+selObj.toString()+"</span>");
                                         currentEle.html(html);
                                         $this.addClass("active");
-                                        editor.find('.iutilsEditor-tools').find('button.align-center').removeClass("active");
-                                        editor.find('.iutilsEditor-tools').find('button.align-right').removeClass("active");
+                                        tools.find('button.align-center').removeClass("active");
+                                        tools.find('button.align-right').removeClass("active");
                                     }
                                     //同步数据
                                     syncData(editor);
@@ -374,7 +381,8 @@
                         });
                     }},
                     {type:"align-center",i:'am-icon-align-center',desc:'居中',init: function (editor) {
-                        editor.find('.iutilsEditor-tools').on('click','button.align-center',function(){
+                        var tools = editor.find('.iutilsEditor-tools');
+                        tools.on('click','button.align-center',function(){
                             var $this = $(this);
                             var selObj = getSelObj();
                             var currentEle=null;//当前元素
@@ -391,15 +399,15 @@
                                     if(currentEle.text().trim()==selObj.toString().trim()){
                                         currentEle.css("text-align","center");
                                         $this.addClass("active");
-                                        editor.find('.iutilsEditor-tools').find('button.align-left').removeClass("active");
-                                        editor.find('.iutilsEditor-tools').find('button.align-right').removeClass("active");
+                                        tools.find('button.align-left').removeClass("active");
+                                        tools.find('button.align-right').removeClass("active");
                                     }else{
                                         var html = currentEle.html();
                                         html = html.replace(new RegExp(selObj.toString(),"gm"),"<span style='text-align:center;'>"+selObj.toString()+"</span>");
                                         currentEle.html(html);
                                         $this.addClass("active");
-                                        editor.find('.iutilsEditor-tools').find('button.align-left').removeClass("active");
-                                        editor.find('.iutilsEditor-tools').find('button.align-right').removeClass("active");
+                                        tools.find('button.align-left').removeClass("active");
+                                        tools.find('button.align-right').removeClass("active");
                                     }
                                     //同步数据
                                     syncData(editor);
@@ -422,7 +430,8 @@
                         });
                     }},
                     {type:"align-right",i:'am-icon-align-right',desc:'右对齐',init: function (editor) {
-                        editor.find('.iutilsEditor-tools').on('click','button.align-right',function(){
+                        var tools = editor.find('.iutilsEditor-tools');
+                        tools.on('click','button.align-right',function(){
                             var $this = $(this);
                             var selObj = getSelObj();
                             var currentEle=null;//当前元素
@@ -439,15 +448,15 @@
                                     if(currentEle.text().trim()==selObj.toString().trim()){
                                         currentEle.css("text-align","right");
                                         $this.addClass("active");
-                                        editor.find('.iutilsEditor-tools').find('button.align-left').removeClass("active");
-                                        editor.find('.iutilsEditor-tools').find('button.align-center').removeClass("active");
+                                        tools.find('button.align-left').removeClass("active");
+                                        tools.find('button.align-center').removeClass("active");
                                     }else{
                                         var html = currentEle.html();
                                         html = html.replace(new RegExp(selObj.toString(),"gm"),"<span style='text-align:right;'>"+selObj.toString()+"</span>");
                                         currentEle.html(html);
                                         $this.addClass("active");
-                                        editor.find('.iutilsEditor-tools').find('button.align-left').removeClass("active");
-                                        editor.find('.iutilsEditor-tools').find('button.align-center').removeClass("active");
+                                        tools.find('button.align-left').removeClass("active");
+                                        tools.find('button.align-center').removeClass("active");
                                     }
                                     //同步数据
                                     syncData(editor);
@@ -516,10 +525,11 @@
                                             currentEle.html(html);
                                         }
                                     }else{
-                                        if(editor.find(".iutilsEditor-content").html()=="<div><br></div>"){
-                                            editor.find(".iutilsEditor-content").html('<div><a href="'+url+'" target="_blank">'+txt+'</a></div>');
+                                        var content = editor.find(".iutilsEditor-content");
+                                        if(content.html()=="<div><br></div>"){
+                                            content.html('<div><a href="'+url+'" target="_blank">'+txt+'</a></div>');
                                         }else{
-                                            editor.find(".iutilsEditor-content").append('<div><a href="'+url+'" target="_blank">'+txt+'</a></div>');
+                                            content.append('<div><a href="'+url+'" target="_blank">'+txt+'</a></div>');
                                         }
                                     }
                                     //同步数据
@@ -578,10 +588,11 @@
                                     table += '</tr>';
                                 }
                                 table += '</table>';
-                                if(editor.find(".iutilsEditor-content").html()=="<div><br></div>"){
-                                    editor.find(".iutilsEditor-content").html(table);
+                                var content = editor.find(".iutilsEditor-content");
+                                if(content.html()=="<div><br></div>"){
+                                    content.html(table);
                                 }else{
-                                    editor.find(".iutilsEditor-content").append(table);
+                                    content.append(table);
                                 }
                                 //同步数据
                                 syncData(editor);
@@ -593,10 +604,11 @@
                         var buttton = editor.find('.iutilsEditor-tools').find('button.smile');
                         var dropdownContent = buttton.next('.am-dropdown-content');
                         dropdownContent.on('click','li',function(){
-                            if(editor.find(".iutilsEditor-content").html()=="<div><br></div>"){
-                                editor.find(".iutilsEditor-content").html($(this).html());
+                            var content = editor.find(".iutilsEditor-content");
+                            if(content.html()=="<div><br></div>"){
+                                content.html($(this).html());
                             }else{
-                                editor.find(".iutilsEditor-content").append($(this).html());
+                                content.append($(this).html());
                             }
                             //同步数据
                             syncData(editor);
@@ -673,10 +685,11 @@
                             dropdownContent.on('click','button',function(){
                                 var textarea = dropdownContent.find("textarea");
                                 if(textarea.val()!=""){
-                                    if(editor.find(".iutilsEditor-content").html()=="<div><br></div>"){
-                                        editor.find(".iutilsEditor-content").html(textarea.val());
+                                    var content = editor.find(".iutilsEditor-content");
+                                    if(content.html()=="<div><br></div>"){
+                                        content.html(textarea.val());
                                     }else{
-                                        editor.find(".iutilsEditor-content").append(textarea.val());
+                                        content.append(textarea.val());
                                     }
                                 }
                                 //同步数据
@@ -692,10 +705,11 @@
                             dropdownContent.on('click','button',function(){
                                 var textarea = dropdownContent.find("textarea");
                                 if(textarea.val()!=""){
-                                    if(editor.find(".iutilsEditor-content").html()=="<div><br></div>"){
-                                        editor.find(".iutilsEditor-content").html("<pre class='am-pre-scrollable'>"+textarea.val()+"</pre>");
+                                    var content = editor.find(".iutilsEditor-content");
+                                    if(content.html()=="<div><br></div>"){
+                                        content.html("<pre class='am-pre-scrollable'>"+textarea.val()+"</pre>");
                                     }else{
-                                        editor.find(".iutilsEditor-content").append("<pre class='am-pre-scrollable'>"+textarea.val()+"</pre>");
+                                        content.append("<pre class='am-pre-scrollable'>"+textarea.val()+"</pre>");
                                     }
                                 }
                                 //同步数据
@@ -794,47 +808,48 @@
                 currentEle = $(selObj.baseNode.parentNode);
             }
             if(currentEle!=null){
+                var tools = editor.find('.iutilsEditor-tools');
                 //是否粗体
                 if(currentEle.css("font-weight")=="bold"){
-                    editor.find('.iutilsEditor-tools').find('button.bold').addClass("active");
+                    tools.find('button.bold').addClass("active");
                 }else{
-                    editor.find('.iutilsEditor-tools').find('button.bold').removeClass("active");
+                    tools.find('button.bold').removeClass("active");
                 }
                 //是否斜体
                 if(currentEle.css("font-style")=="italic"){
-                    editor.find('.iutilsEditor-tools').find('button.italic').addClass("active");
+                    tools.find('button.italic').addClass("active");
                 }else{
-                    editor.find('.iutilsEditor-tools').find('button.italic').removeClass("active");
+                    tools.find('button.italic').removeClass("active");
                 }
                 //是否下划线
                 if(currentEle.css("text-decoration")=="underline"){
-                    editor.find('.iutilsEditor-tools').find('button.underline').addClass("active");
+                    tools.find('button.underline').addClass("active");
                 }else{
-                    editor.find('.iutilsEditor-tools').find('button.underline').removeClass("active");
+                    tools.find('button.underline').removeClass("active");
                 }
                 //是否删除线
                 if(currentEle.css("text-decoration")=="line-through"){
-                    editor.find('.iutilsEditor-tools').find('button.strikethrough').addClass("active");
+                    tools.find('button.strikethrough').addClass("active");
                 }else{
-                    editor.find('.iutilsEditor-tools').find('button.strikethrough').removeClass("active");
+                    tools.find('button.strikethrough').removeClass("active");
                 }
                 //是否居左
                 if(currentEle.css("text-align")=="left"){
-                    editor.find('.iutilsEditor-tools').find('button.align-left').addClass("active");
+                    tools.find('button.align-left').addClass("active");
                 }else{
-                    editor.find('.iutilsEditor-tools').find('button.align-left').removeClass("active");
+                    tools.find('button.align-left').removeClass("active");
                 }
                 //是否居中
                 if(currentEle.css("text-align")=="center"){
-                    editor.find('.iutilsEditor-tools').find('button.align-center').addClass("active");
+                    tools.find('button.align-center').addClass("active");
                 }else{
-                    editor.find('.iutilsEditor-tools').find('button.align-center').removeClass("active");
+                    tools.find('button.align-center').removeClass("active");
                 }
                 //是否居右
                 if(currentEle.css("text-align")=="right"){
-                    editor.find('.iutilsEditor-tools').find('button.align-right').addClass("active");
+                    tools.find('button.align-right').addClass("active");
                 }else{
-                    editor.find('.iutilsEditor-tools').find('button.align-right').removeClass("active");
+                    tools.find('button.align-right').removeClass("active");
                 }
             }
         });
