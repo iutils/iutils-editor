@@ -90,7 +90,7 @@
                             //点亮菜单
                             if(!$this.hasClass('active')){
                                 if(currentEle!=null){
-                                    if(currentEle.text()==selObj.toString()){
+                                    if(currentEle.text().trim()==selObj.toString().trim()){
                                         currentEle.css("font-weight","bold");
                                         $this.addClass("active");
                                     }else{
@@ -102,7 +102,7 @@
                                 }
                             }else{
                                 if(currentEle!=null){
-                                    if(currentEle.text()==selObj.toString()){
+                                    if(currentEle.text().trim()==selObj.toString().trim()){
                                         currentEle.css("font-weight","normal");
                                         $this.removeClass("active");
                                     }else{
@@ -130,7 +130,7 @@
                             //点亮菜单
                             if(!$this.hasClass('active')){
                                 if(currentEle!=null){
-                                    if(currentEle.text()==selObj.toString()){
+                                    if(currentEle.text().trim()==selObj.toString().trim()){
                                         currentEle.css("font-style","italic");
                                         $this.addClass("active");
                                     }else{
@@ -142,7 +142,7 @@
                                 }
                             }else{
                                 if(currentEle!=null){
-                                    if(currentEle.text()==selObj.toString()){
+                                    if(currentEle.text().trim()==selObj.toString().trim()){
                                         currentEle.css("font-style","normal");
                                         $this.removeClass("active");
                                     }else{
@@ -170,7 +170,7 @@
                             //点亮菜单
                             if(!$this.hasClass('active')){
                                 if(currentEle!=null){
-                                    if(currentEle.text()==selObj.toString()){
+                                    if(currentEle.text().trim()==selObj.toString().trim()){
                                         currentEle.css("text-decoration","underline");
                                         $this.addClass("active");
                                         editor.find('.iutilsEditor-tools').find('button.strikethrough').removeClass("active");
@@ -184,7 +184,7 @@
                                 }
                             }else{
                                 if(currentEle!=null){
-                                    if(currentEle.text()==selObj.toString()){
+                                    if(currentEle.text().trim()==selObj.toString().trim()){
                                         currentEle.css("text-decoration","none");
                                         $this.removeClass("active");
                                     }else{
@@ -212,7 +212,7 @@
                             //点亮菜单
                             if(!$this.hasClass('active')){
                                 if(currentEle!=null){
-                                    if(currentEle.text()==selObj.toString()){
+                                    if(currentEle.text().trim()==selObj.toString().trim()){
                                         currentEle.css("text-decoration","line-through");
                                         $this.addClass("active");
                                         editor.find('.iutilsEditor-tools').find('button.underline').removeClass("active");
@@ -226,7 +226,7 @@
                                 }
                             }else{
                                 if(currentEle!=null){
-                                    if(currentEle.text()==selObj.toString()){
+                                    if(currentEle.text().trim()==selObj.toString().trim()){
                                         currentEle.css("text-decoration","none");
                                         $this.removeClass("active");
                                     }else{
@@ -308,7 +308,7 @@
                             //点亮菜单
                             if(!$this.hasClass('active')){
                                 if(currentEle!=null){
-                                    if(currentEle.text()==selObj.toString()){
+                                    if(currentEle.text().trim()==selObj.toString().trim()){
                                         currentEle.css("text-align","left");
                                         $this.addClass("active");
                                         editor.find('.iutilsEditor-tools').find('button.align-center').removeClass("active");
@@ -324,7 +324,7 @@
                                 }
                             }else{
                                 if(currentEle!=null){
-                                    if(currentEle.text()==selObj.toString()){
+                                    if(currentEle.text().trim()==selObj.toString().trim()){
                                         currentEle.css("text-align","inherit");
                                         $this.removeClass("active");
                                     }else{
@@ -352,7 +352,7 @@
                             //点亮菜单
                             if(!$this.hasClass('active')){
                                 if(currentEle!=null){
-                                    if(currentEle.text()==selObj.toString()){
+                                    if(currentEle.text().trim()==selObj.toString().trim()){
                                         currentEle.css("text-align","center");
                                         $this.addClass("active");
                                         editor.find('.iutilsEditor-tools').find('button.align-left').removeClass("active");
@@ -368,7 +368,7 @@
                                 }
                             }else{
                                 if(currentEle!=null){
-                                    if(currentEle.text()==selObj.toString()){
+                                    if(currentEle.text().trim()==selObj.toString().trim()){
                                         currentEle.css("text-align","inherit");
                                         $this.removeClass("active");
                                     }else{
@@ -396,7 +396,7 @@
                             //点亮菜单
                             if(!$this.hasClass('active')){
                                 if(currentEle!=null){
-                                    if(currentEle.text()==selObj.toString()){
+                                    if(currentEle.text().trim()==selObj.toString().trim()){
                                         currentEle.css("text-align","right");
                                         $this.addClass("active");
                                         editor.find('.iutilsEditor-tools').find('button.align-left').removeClass("active");
@@ -412,7 +412,7 @@
                                 }
                             }else{
                                 if(currentEle!=null){
-                                    if(currentEle.text()==selObj.toString()){
+                                    if(currentEle.text().trim()==selObj.toString().trim()){
                                         currentEle.css("text-align","inherit");
                                         $this.removeClass("active");
                                     }else{
