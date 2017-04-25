@@ -84,11 +84,7 @@
                                 currentEle = $(selObj.baseNode.parentNode);
                             }
                             //判断当前节点是否可操作
-                            if(currentEle!=null || currentEle.hasClass("iutilsEditor-content") || currentEle.hasClass("iutilsEditor") || currentEle.hasClass("no-op")){
-                                return;
-                            }
-                            //过滤掉不能操作的元素
-                            if(currentEle.hasClass("no-op")){
+                            if(!isEleOp(currentEle)){
                                 return;
                             }
                             //点亮菜单
@@ -128,7 +124,7 @@
                                 currentEle = $(selObj.baseNode.parentNode);
                             }
                             //判断当前节点是否可操作
-                            if(currentEle!=null || currentEle.hasClass("iutilsEditor-content") || currentEle.hasClass("iutilsEditor") || currentEle.hasClass("no-op")){
+                            if(!isEleOp(currentEle)){
                                 return;
                             }
                             //点亮菜单
@@ -168,7 +164,7 @@
                                 currentEle = $(selObj.baseNode.parentNode);
                             }
                             //判断当前节点是否可操作
-                            if(currentEle!=null || currentEle.hasClass("iutilsEditor-content") || currentEle.hasClass("iutilsEditor") || currentEle.hasClass("no-op")){
+                            if(!isEleOp(currentEle)){
                                 return;
                             }
                             //点亮菜单
@@ -210,7 +206,7 @@
                                 currentEle = $(selObj.baseNode.parentNode);
                             }
                             //判断当前节点是否可操作
-                            if(currentEle!=null || currentEle.hasClass("iutilsEditor-content") || currentEle.hasClass("iutilsEditor") || currentEle.hasClass("no-op")){
+                            if(!isEleOp(currentEle)){
                                 return;
                             }
                             //点亮菜单
@@ -251,7 +247,7 @@
                                 currentEle = $(selObj.baseNode.parentNode);
                             }
                             //判断当前节点是否可操作
-                            if(currentEle!=null || currentEle.hasClass("iutilsEditor-content") || currentEle.hasClass("iutilsEditor") || currentEle.hasClass("no-op")){
+                            if(!isEleOp(currentEle)){
                                 return;
                             }
                             if(currentEle!=null){
@@ -306,7 +302,7 @@
                                 currentEle = $(selObj.baseNode.parentNode);
                             }
                             //判断当前节点是否可操作
-                            if(currentEle!=null || currentEle.hasClass("iutilsEditor-content") || currentEle.hasClass("iutilsEditor") || currentEle.hasClass("no-op")){
+                            if(!isEleOp(currentEle)){
                                 return;
                             }
                             //点亮菜单
@@ -350,7 +346,7 @@
                                 currentEle = $(selObj.baseNode.parentNode);
                             }
                             //判断当前节点是否可操作
-                            if(currentEle!=null || currentEle.hasClass("iutilsEditor-content") || currentEle.hasClass("iutilsEditor") || currentEle.hasClass("no-op")){
+                            if(!isEleOp(currentEle)){
                                 return;
                             }
                             //点亮菜单
@@ -394,7 +390,7 @@
                                 currentEle = $(selObj.baseNode.parentNode);
                             }
                             //判断当前节点是否可操作
-                            if(currentEle!=null || currentEle.hasClass("iutilsEditor-content") || currentEle.hasClass("iutilsEditor") || currentEle.hasClass("no-op")){
+                            if(!isEleOp(currentEle)){
                                 return;
                             }
                             //点亮菜单
@@ -437,7 +433,7 @@
                                 currentEle = $(selObj.baseNode.parentNode);
                             }
                             //判断当前节点是否可操作
-                            if(currentEle!=null || currentEle.hasClass("iutilsEditor-content") || currentEle.hasClass("iutilsEditor") || currentEle.hasClass("no-op")){
+                            if(!isEleOp(currentEle)){
                                 return;
                             }
                             if(currentEle!=null){
@@ -460,7 +456,7 @@
                                 currentEle = $(selObj.baseNode.parentNode);
                             }
                             //判断当前节点是否可操作
-                            if(currentEle!=null || currentEle.hasClass("iutilsEditor-content") || currentEle.hasClass("iutilsEditor") || currentEle.hasClass("no-op")){
+                            if(!isEleOp(currentEle)){
                                 return;
                             }
                             if(currentEle!=null){
@@ -506,7 +502,7 @@
                                 currentEle = $(selObj.baseNode.parentNode);
                             }
                             //判断当前节点是否可操作
-                            if(currentEle!=null || currentEle.hasClass("iutilsEditor-content") || currentEle.hasClass("iutilsEditor") || currentEle.hasClass("no-op")){
+                            if(!isEleOp(currentEle)){
                                 return;
                             }
                             if(currentEle!=null && currentEle.is('a')){
@@ -629,7 +625,7 @@
                             });
                         });
                     }},
-                    {type:"video",i:'am-icon-video-camera',html:'<div class="am-dropdown-content" style="width: 312px;"><form class="am-form am-form-horizontal"><div class="am-form-group"><div class="am-u-sm-12"><textarea rows="5"><iframe class="no-op" height=498 width=510 src=\'[视频地址]\' frameborder=0 \'allowfullscreen\'></iframe></textarea></div></div><div class="am-form-group"><div class="am-u-sm-12"><button type="button" class="am-btn am-btn-default am-btn-xs am-align-right" style="margin-bottom:0;">确认</button></div></div></form></div>',desc:'在线视频',
+                    {type:"video",i:'am-icon-video-camera',html:'<div class="am-dropdown-content" style="width: 312px;"><form class="am-form am-form-horizontal"><div class="am-form-group"><div class="am-u-sm-12"><textarea rows="5"><iframe class="no-op" height="498" width="510" src="[视频地址]" frameborder=0 allowfullscreen></iframe></textarea></div></div><div class="am-form-group"><div class="am-u-sm-12"><button type="button" class="am-btn am-btn-default am-btn-xs am-align-right" style="margin-bottom:0;">确认</button></div></div></form></div>',desc:'在线视频',
                         init: function (editor) {
                             var buttton = editor.find('.iutilsEditor-tools').find('button.video');
                             var dropdownContent = buttton.next('.am-dropdown-content');
@@ -797,6 +793,15 @@
                 }
             }
         });
+    }
+
+    //判断当前节点是否可以操作
+    function isEleOp(currentEle){
+        if(currentEle!=null && !currentEle.hasClass("iutilsEditor-content") && !currentEle.hasClass("iutilsEditor") && !currentEle.hasClass("no-op")){
+            return true;//可操作
+        }else{
+            return false;//可操作
+        }
     }
 
     //获取表情包
