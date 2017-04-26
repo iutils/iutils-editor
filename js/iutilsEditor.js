@@ -607,8 +607,8 @@
                                 buttton.parent().dropdown('close');
                             });
                     }},
-                    {type:"smile",i:'am-icon-smile-o',html:'<ul class="am-dropdown-content" style="width: 320px;padding: 5px;">'+getSmile()+'</ul>',desc:'表情',init: function (editor) {
-                        var buttton = editor.find('.iutilsEditor-tools').find('button.smile');
+                    {type:"smile-o",i:'am-icon-smile-o',html:'<ul class="am-dropdown-content" style="width: 320px;padding: 5px;">'+getSmile()+'</ul>',desc:'表情',init: function (editor) {
+                        var buttton = editor.find('.iutilsEditor-tools').find('button.smile-o');
                         var dropdownContent = buttton.next('.am-dropdown-content');
                         dropdownContent.on('click','li',function(){
                             var content = editor.find(".iutilsEditor-content");
