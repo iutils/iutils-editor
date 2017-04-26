@@ -557,7 +557,7 @@
                             }
                             if(currentEle!=null && currentEle.is('a')){
                                 var html = currentEle.parent().html();
-                                html = html.replace(new RegExp('<a href="'+currentEle.attr("href")+'" target="_blank">'+currentEle.html()+'</a>',"gm"),currentEle.html());
+                                html = html.replace(new RegExp('<a href="'+currentEle.attr("href")+'" target="_blank" style=".*?">'+currentEle.html()+'</a>',"gm"),currentEle.html());
                                 currentEle.parent().html(html);
                                 //同步数据
                                 syncData(editor);
