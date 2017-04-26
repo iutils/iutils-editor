@@ -577,9 +577,11 @@
                                         dropdownContent.find("tr").eq(i).find("td").eq(j).addClass("active");
                                     }
                                 }
+                                dropdownContent.find(".choose-table-footer").html('<span>'+row+'</span><span> 行 </span><span>'+col+'</span><span> 列 </span>');
                             });
                             dropdownContent.on('mouseleave','td',function(){
                                 dropdownContent.find("td").removeClass("active");
+                                dropdownContent.find(".choose-table-footer").html('<span>0</span><span> 行 </span><span>0</span><span> 列 </span>');
                             });
                             dropdownContent.on('click','td',function(){
                                 var col = parseInt($(this).attr("index"));
