@@ -482,7 +482,7 @@
             },
             {
                 group:[
-                    {type:"link",i:'am-icon-link',html:'<div class="am-dropdown-content"><form class="am-form am-form-horizontal"><div class="am-form-group"><div class="am-u-sm-12"><input type="text" placeholder="程序员工具" value="文本"></div></div><div class="am-form-group"><div class="am-u-sm-12"><input type="text" placeholder="http://iutils.cn" value="http://"></div></div><div class="am-form-group"><div class="am-u-sm-12"><button type="button" class="am-btn am-btn-default am-btn-xs am-align-right" style="margin-bottom:0;">确认</button></div></div></form></div>',desc:'链接',
+                    {type:"link",i:'am-icon-link',html:'<div class="am-dropdown-content"><form class="am-form am-form-horizontal"><div class="am-form-group"><div class="am-u-sm-12"><input type="text" placeholder="程序员工具" value="文本"></div></div><div class="am-form-group"><div class="am-u-sm-12"><input type="text" placeholder="http://iutils.cn" value="http://"><input type="text" style="display: none;"></div></div><div class="am-form-group"><div class="am-u-sm-12"><button type="button" class="am-btn am-btn-default am-btn-xs am-align-right" style="margin-bottom:0;">确认</button></div></div></form></div>',desc:'链接',
                         init: function (editor) {
                             var buttton = editor.find('.iutilsEditor-tools').find('button.link');
                             var dropdownContent = buttton.next('.am-dropdown-content');
@@ -505,24 +505,29 @@
                                     }else{
                                         input.eq(0).val(selObj.toString());
                                         input.eq(1).val("http://");
+                                        input.eq(2).val(selObj.toString());
                                     }
-                                    //同步数据
-                                    syncData(editor);
                                 }
                             });
                             dropdownContent.on('click','button',function(){
                                 var input = dropdownContent.find('input[type=text]');
                                 var txt = input.eq(0).val();
                                 var url = input.eq(1).val();
+                                var old = input.eq(2).val();
                                 if(txt!="" && url!=""){
                                     if(currentEle!=null){
                                         if(currentEle.is('a')){
                                             currentEle.html(txt);
                                             currentEle.attr("href",url);
                                         }else{
-                                            var html = currentEle.html();
-                                            html = html.replace(new RegExp(txt,"gm"),"<a href='"+url+"' target='_blank'>"+txt+"</a>");
-                                            currentEle.html(html);
+                                            //判断是新增还是替换
+                                            if(old!="" && old!=undefined && old!=null){
+                                                var html = currentEle.html();
+                                                html = html.replace(new RegExp(old,"gm"),"<a href='"+url+"' target='_blank'>"+txt+"</a>");
+                                                currentEle.html(html);
+                                            }else{
+                                                currentEle.append("<a href='"+url+"' target='_blank'>"+txt+"</a>");
+                                            }
                                         }
                                     }else{
                                         var content = editor.find(".iutilsEditor-content");
