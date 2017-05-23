@@ -3,6 +3,7 @@
  * 可以定义组件
  */
 ;(function($) {
+    var cursorPosition;//光标所在的位置
     var defaults = {
         menus: [
             //字段解释：group分组 type菜单类型 i字体图标 html自定义页面 desc说明 init自定义方法
@@ -295,7 +296,11 @@
                                 if(content.html()=="<div><br></div>"){
                                     content.html($(this).html());
                                 }else{
-                                    content.append($(this).html());
+                                    if(cursorPosition.hasClass("iutilsEditor-content")) {
+                                        content.append($(this).html());
+                                    }else{
+                                        cursorPosition.after($(this).html());
+                                    }
                                 }
                                 //关闭弹出框
                                 buttton.parent().dropdown('close');
@@ -313,7 +318,11 @@
                             if(content.html()=="<div><br></div>"){
                                 content.html('<ul class="no-op"><li><br></li></ul>');
                             }else{
-                                content.append('<ul class="no-op"><li><br></li></ul>');
+                                if(cursorPosition.hasClass("iutilsEditor-content")){
+                                    content.append('<ul class="no-op"><li><br></li></ul>');
+                                }else{
+                                    cursorPosition.after('<ul class="no-op"><li><br></li></ul>');
+                                }
                             }
                             //同步数据
                             syncData(editor);
@@ -325,7 +334,11 @@
                             if(content.html()=="<div><br></div>"){
                                 content.html('<ol class="no-op"><li><br></li></ol>');
                             }else{
-                                content.append('<ol class="no-op"><li><br></li></ol>');
+                                if(cursorPosition.hasClass("iutilsEditor-content")) {
+                                    content.append('<ol class="no-op"><li><br></li></ol>');
+                                }else{
+                                    cursorPosition.after('<ol class="no-op"><li><br></li></ol>');
+                                }
                             }
                             //同步数据
                             syncData(editor);
@@ -534,7 +547,11 @@
                                         if(content.html()=="<div><br></div>"){
                                             content.html('<div><a href="'+url+'" target="_blank">'+txt+'</a></div>');
                                         }else{
-                                            content.append('<div><a href="'+url+'" target="_blank">'+txt+'</a></div>');
+                                            if(cursorPosition.hasClass("iutilsEditor-content")) {
+                                                content.append('<div><a href="'+url+'" target="_blank">'+txt+'</a></div>');
+                                            }else{
+                                                cursorPosition.after('<div><a href="'+url+'" target="_blank">'+txt+'</a></div>');
+                                            }
                                         }
                                     }
                                     //同步数据
@@ -599,7 +616,11 @@
                                 if(content.html()=="<div><br></div>"){
                                     content.html(table);
                                 }else{
-                                    content.append(table);
+                                    if(cursorPosition.hasClass("iutilsEditor-content")) {
+                                        content.append(table);
+                                    }else{
+                                        cursorPosition.after(table);
+                                    }
                                 }
                                 //同步数据
                                 syncData(editor);
@@ -615,7 +636,11 @@
                             if(content.html()=="<div><br></div>"){
                                 content.html($(this).html());
                             }else{
-                                content.append($(this).html());
+                                if(cursorPosition.hasClass("iutilsEditor-content")) {
+                                    content.append($(this).html());
+                                }else{
+                                    cursorPosition.after($(this).html());
+                                }
                             }
                             //同步数据
                             syncData(editor);
@@ -696,7 +721,11 @@
                                     if(content.html()=="<div><br></div>"){
                                         content.html(textarea.val());
                                     }else{
-                                        content.append(textarea.val());
+                                        if(cursorPosition.hasClass("iutilsEditor-content")) {
+                                            content.append(textarea.val());
+                                        }else{
+                                            cursorPosition.after(textarea.val());
+                                        }
                                     }
                                 }
                                 //同步数据
@@ -716,7 +745,11 @@
                                     if(content.html()=="<div><br></div>"){
                                         content.html("<pre class='am-pre-scrollable'>"+textarea.val()+"</pre>");
                                     }else{
-                                        content.append("<pre class='am-pre-scrollable'>"+textarea.val()+"</pre>");
+                                        if(cursorPosition.hasClass("iutilsEditor-content")) {
+                                            content.append("<pre class='am-pre-scrollable'>"+textarea.val()+"</pre>");
+                                        }else{
+                                            cursorPosition.after("<pre class='am-pre-scrollable'>"+textarea.val()+"</pre>");
+                                        }
                                     }
                                 }
                                 //同步数据
@@ -804,6 +837,10 @@
             if($(this).html()=="" || $(this).html()=="<br>"){
                 content.html("<div><br></div>");
             }
+        });
+        //确定光标所在的位置
+        content.on('click',function(e){
+            cursorPosition = $(e.target);
         });
         //初始化内容
         content.html("<div><br></div>");
