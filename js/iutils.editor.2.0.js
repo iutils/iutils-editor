@@ -10,8 +10,8 @@
             {group:[
                 {type:"eraser",i:'am-icon-eraser',desc:'清除格式',init: function (editor) {
                     editor.find('.iutilsEditor-tools').on('click','button.eraser',function(){
-                        console.log(cursor);
-                        var selObj = getSelObj();
+                        console.log(cursor.html());
+                        var selObj = getSelectText();
                         console.log(selObj);
                         syncData(editor);//同步数据
                     });
@@ -19,16 +19,112 @@
             ]},
             {group:[
                 {type:"bold",i:'am-icon-bold',desc:'粗体',init: function (editor) {
-
+                    editor.find('.iutilsEditor-tools').on('click','button.bold',function() {
+                        var $this = $(this);
+                        var selectText = getSelectText();
+                        if(isEleOp(selectText.trim())){
+                            return;
+                        }
+                        if(toolsSelectd($this)){
+                            if(cursor.text()==selectText){
+                                cursor.css("font-weight","bold");
+                            }else{
+                                var html = cursor.html();
+                                html = html.replace(new RegExp(selectText,"gm"),"<span style='font-weight:bold;'>"+selectText+"</span>");
+                                cursor.html(html);
+                            }
+                        }else{
+                            if(cursor.text()==selectText){
+                                cursor.css("font-weight","");
+                            }else{
+                                var html = cursor.html();
+                                html = html.replace(new RegExp("<span style='font-weight:bold;'>"+selectText+"</span>","gm"),selectText);
+                                cursor.html(html);
+                            }
+                        }
+                        syncData(editor);//同步数据
+                    });
                 }},
                 {type:"italic",i:'am-icon-italic',desc:'斜体',init: function (editor) {
-
+                    editor.find('.iutilsEditor-tools').on('click','button.italic',function() {
+                        var $this = $(this);
+                        var selectText = getSelectText();
+                        if(isEleOp(selectText.trim())){
+                            return;
+                        }
+                        if(toolsSelectd($this)){
+                            if(cursor.text()==selectText){
+                                cursor.css("font-style","italic");
+                            }else{
+                                var html = cursor.html();
+                                html = html.replace(new RegExp(selectText,"gm"),"<span style='font-style:italic;'>"+selectText+"</span>");
+                                cursor.html(html);
+                            }
+                        }else{
+                            if(cursor.text()==selectText){
+                                cursor.css("font-style","");
+                            }else{
+                                var html = cursor.html();
+                                html = html.replace(new RegExp("<span style='font-style:italic;'>"+selectText+"</span>","gm"),selectText);
+                                cursor.html(html);
+                            }
+                        }
+                        syncData(editor);//同步数据
+                    });
                 }},
                 {type:"underline",i:'am-icon-underline',desc:'下划线',init: function (editor) {
-
+                    editor.find('.iutilsEditor-tools').on('click','button.underline',function() {
+                        var $this = $(this);
+                        var selectText = getSelectText();
+                        if(isEleOp(selectText.trim())){
+                            return;
+                        }
+                        if(toolsSelectd($this)){
+                            if(cursor.text()==selectText){
+                                cursor.css("text-decoration","underline");
+                            }else{
+                                var html = cursor.html();
+                                html = html.replace(new RegExp(selectText,"gm"),"<span style='text-decoration:underline;'>"+selectText+"</span>");
+                                cursor.html(html);
+                            }
+                        }else{
+                            if(cursor.text()==selectText){
+                                cursor.css("text-decoration","");
+                            }else{
+                                var html = cursor.html();
+                                html = html.replace(new RegExp("<span style='text-decoration:underline;'>"+selectText+"</span>","gm"),selectText);
+                                cursor.html(html);
+                            }
+                        }
+                        syncData(editor);//同步数据
+                    });
                 }},
                 {type:"strikethrough",i:'am-icon-strikethrough',desc:'删除线',init: function (editor) {
-
+                    editor.find('.iutilsEditor-tools').on('click','button.strikethrough',function() {
+                        var $this = $(this);
+                        var selectText = getSelectText();
+                        if(isEleOp(selectText.trim())){
+                            return;
+                        }
+                        if(toolsSelectd($this)){
+                            if(cursor.text()==selectText){
+                                cursor.css("text-decoration","line-through");
+                            }else{
+                                var html = cursor.html();
+                                html = html.replace(new RegExp(selectText,"gm"),"<span style='text-decoration:line-through;'>"+selectText+"</span>");
+                                cursor.html(html);
+                            }
+                        }else{
+                            if(cursor.text()==selectText){
+                                cursor.css("text-decoration","");
+                            }else{
+                                var html = cursor.html();
+                                html = html.replace(new RegExp("<span style='text-decoration:line-through;'>"+selectText+"</span>","gm"),selectText);
+                                cursor.html(html);
+                            }
+                        }
+                        syncData(editor);//同步数据
+                    });
                 }}
             ]},
             {
@@ -104,9 +200,81 @@
             var $this = $(this);
             $($this).dropdown('open');
         });
-
+        //绑定按钮状态监听
+        editorPanel.mouseup(function(){
+            var selObj = getSelectObj();
+            var currentEle=null;//当前元素
+            if(selObj!=null && selObj.baseNode!=null){
+                currentEle = $(selObj.baseNode.parentNode);
+            }
+            if(currentEle!=null){
+                var tools = editor.find('.iutilsEditor-tools');
+                //是否粗体
+                if(currentEle.css("font-weight")=="bold"){
+                    tools.find('button.bold').addClass("active");
+                }else{
+                    tools.find('button.bold').removeClass("active");
+                }
+                //是否斜体
+                if(currentEle.css("font-style")=="italic"){
+                    tools.find('button.italic').addClass("active");
+                }else{
+                    tools.find('button.italic').removeClass("active");
+                }
+                //是否下划线
+                if(currentEle.css("text-decoration")=="underline"){
+                    tools.find('button.underline').addClass("active");
+                }else{
+                    tools.find('button.underline').removeClass("active");
+                }
+                //是否删除线
+                if(currentEle.css("text-decoration")=="line-through"){
+                    tools.find('button.strikethrough').addClass("active");
+                }else{
+                    tools.find('button.strikethrough').removeClass("active");
+                }
+                //是否居左
+                if(currentEle.css("text-align")=="left"){
+                    tools.find('button.align-left').addClass("active");
+                }else{
+                    tools.find('button.align-left').removeClass("active");
+                }
+                //是否居中
+                if(currentEle.css("text-align")=="center"){
+                    tools.find('button.align-center').addClass("active");
+                }else{
+                    tools.find('button.align-center').removeClass("active");
+                }
+                //是否居右
+                if(currentEle.css("text-align")=="right"){
+                    tools.find('button.align-right').addClass("active");
+                }else{
+                    tools.find('button.align-right').removeClass("active");
+                }
+            }
+        });
 
     };
+
+    //工具栏选中状态
+    function toolsSelectd($this){
+        if(!$this.hasClass('active')){
+            $this.addClass("active");
+            return true;
+        }else{
+            $this.removeClass("active");
+            return false;
+        }
+    }
+
+    //判断当前节点是否可以操作
+    function isEleOp(selectText){
+        if(!cursor.hasClass("iutilsEditor-content") && !cursor.hasClass("no-op") && selectText!=""){
+            return false;//可操作
+        }else{
+            return true;//不可操作
+        }
+    }
 
     //同步数据
     function syncData(editor){
@@ -136,12 +304,8 @@
         } else if (window.document.selection) {
             selObj = window.document.selection.createRange();
         }
-        var currentEle=null;//当前元素
-        if(selObj!=null && selObj.baseNode!=null){
-            currentEle = $(selObj.baseNode.parentNode);
-        }
-        if(currentEle!=null){
-            text = currentEle.text();
+        if(selObj!=null){
+            text = selObj.toString();
         }
         return text;
     }
